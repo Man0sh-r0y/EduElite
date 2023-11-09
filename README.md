@@ -1,2 +1,2 @@
 # StudyNotion 
-## A E-Learning Platform
+A E-Learning Platform
