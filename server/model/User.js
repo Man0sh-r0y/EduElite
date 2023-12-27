@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
         ref: 'Course', // defining the reference
     }], // array of courses
     image:{
-        type: String, // defining the data type
+        type: String, // defining the data type (img url should be in string format)
         required: true, // defining the constraint
     },
     courseProgress: [{

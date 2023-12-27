@@ -1,5 +1,11 @@
 const mongoose = require('mongoose'); // importing mongoose library
 
+// a Course model will have these following attributes
+// courseName, courseDescription, 
+// instructor who is going to teach the course
+// whatYouWillLearn (Which type of course it it)
+// courseContent, ratingsAndReviews, price, thumbnail, tag, studentEnrolled
+
 // creating a schema for course
 const courseSchema = new mongoose.Schema({
     courseName: {
