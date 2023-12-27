@@ -3,10 +3,10 @@
 
 ## Test Users
 
-**Test Student Email**:
+**Test Email (for Student Profile)**:
 
-**Test Student Password**:
+**Test Password (for Student Profile)**:
 
-**Test Instructor Email**:
+**Test Email (for Instructor Profile)**:
 
-**Test Instructor Password**:
+**Test Password (for Instructor Profile)**:
