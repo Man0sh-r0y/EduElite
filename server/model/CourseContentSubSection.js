@@ -1,5 +1,9 @@
 const mongoose = require('mongoose'); // importing mongoose library
 
+// In the course content part, there will be multiple sections
+// and each section will have multiple subsections
+// each sub section will have its title, time duration, description and course video url
+
 // creating a schema for course content sub-section
 const subSectionSchema = new mongoose.Schema({
     title: {

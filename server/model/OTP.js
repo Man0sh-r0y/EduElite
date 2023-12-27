@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'); // importing mongoose library
 
+// creating a schema for OTP
 const OTPSchema = new mongoose.Schema({
     email: {
         type: String, // defining the data type
