@@ -117,10 +117,10 @@ exports.signUp = async (req, res) => {
             dateOfBirth: null,
             about: null,
             contactNumber: null
-        })
+        });
 
         // Save the user in the DataBase
-        await User.create({
+        const user = await User.create({
             firstName,
             lastName,
             email,
@@ -184,10 +184,12 @@ exports.login = async (req, res) => {
             }
 
             // generate JWT token
-            const token = jwt.sign(options, process.env.JWT_SECRET, { expiresIn: '2h' });
+            const token = jwt.sign(options, process.env.JWT_SECRET, {
+                expiresIn: '2h' // token will be expired after 2 hours
+            });
 
-            user.token = token;
-            user.password = undefined;
+            user.token = token; // add token to user object 
+            user.password = undefined; // remove password from user object as we will return user object in response
 
             // create cookie and send response
             res.cookie('token', token, {
@@ -201,7 +203,7 @@ exports.login = async (req, res) => {
             });
         }
     } catch (error) {
-        return res.status(500).json({
+        return res.status(401).json({
             success: false,
             message: "Login failure, please try again later",
             error: error.message
@@ -213,7 +215,7 @@ exports.login = async (req, res) => {
 // 1. Fetch Old Password, New password, Confirm Password from request body
 // 2. Validate Password (check if all fields are present or not)
 // 3. Check if New Password and Confirm Password matches
-// 4. Update password in DataBase
+// 4. Update password in DataBase (hash the password)
 // 5. Send Mail of password updation
 // 6. Return response
 
@@ -222,6 +224,32 @@ exports.login = async (req, res) => {
 exports.changePassword = async (req, res) => {
 
     try {
+        // fetch data from req body
+        const { oldPassword, newPassword, confirmPassword } = req.body;
+
+        // Validate Password (check if all fields are present or not)
+        if(!oldPassword || !newPassword || !confirmPassword) {
+            return res.status(403).json({
+                success: false,
+                message: "All fields are required"
+            });
+        }
+
+        // Check if New Password and Confirm Password matches
+        if(newPassword !== confirmPassword) {
+            return res.status(403).json({
+                success: false,
+                message: "New Password and Confirm Password doesn't match"
+            });
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update password in DataBase
+        const user = await User.findByIdAndUpdate(req.user.id, { password: hashedPassword }, { new: true });
+
+        // Send Mail of password updation
         
     } catch (error) {
         
