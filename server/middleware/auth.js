@@ -53,13 +53,74 @@ exports.auth = async (req, res, next) => {
 // Check if user is Student or not
 exports.isStudent = async (req, res, next) => {
     try {
+
+        // at first, user authentication is done
+        // so req.user is already set
+        // now req.user contains user details
+
         if(req.user.accountType !== "Student") {
             return res.status(401).json({
                 success: false,
-                message: "You are not authorized to access this resource"
+                message: "You are not authorized to access this resource. This is protected route for students only"
             });
         }
+
+        next(); // move on to next middleware function
     } catch (error) {
-        
+        return res.status(500).json({
+            success: false,
+            message: "User's role can't be verified, Please try again later",
+            error: error.message
+        });
+    }
+}
+
+// Check if user is Instructor or not
+exports.isInstructor = async (req, res, next) => {
+    try {
+
+        // at first, user authentication is done
+        // so req.user is already set
+        // now req.user contains user details
+
+        if(req.user.accountType !== "Instructor") {
+            return res.status(401).json({
+                success: false,
+                message: "You are not authorized to access this resource. This is protected route for instructors only"
+            });
+        }
+
+        next(); // move on to next middleware function
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "User's role can't be verified, Please try again later",
+            error: error.message
+        });
+    }
+}
+
+// Check if user is Admin or not
+exports.isAdmin = async (req, res, next) => {
+    try {
+
+        // at first, user authentication is done
+        // so req.user is already set
+        // now req.user contains user details
+
+        if(req.user.accountType !== "Admin") {
+            return res.status(401).json({
+                success: false,
+                message: "You are not authorized to access this resource. This is protected route for admins only"
+            });
+        }
+
+        next(); // move on to next middleware function
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "User's role can't be verified, Please try again later",
+            error: error.message
+        });
     }
 }
