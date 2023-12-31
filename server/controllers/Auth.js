@@ -248,6 +248,7 @@ exports.changePassword = async (req, res) => {
 
         // Update password in DataBase
         const user = await User.findByIdAndUpdate(req.user.id, { password: hashedPassword }, { new: true });
+        // if I would haven't used { new: true } then it would have returned the old document
 
         // Send Mail of password updation
         
