@@ -12,4 +12,4 @@
 **Test Email Password (for Instructor Profile)**:
 
 ## Documentation
-[Read the document](documentation.md)
+[Go to the documentation page](documentation.md)
