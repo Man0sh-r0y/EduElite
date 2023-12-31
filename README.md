@@ -10,3 +10,6 @@
 **Test Email id (for Instructor Profile)**:
 
 **Test Email Password (for Instructor Profile)**:
+
+## Documentation
+[Read the document](documentation.md)
