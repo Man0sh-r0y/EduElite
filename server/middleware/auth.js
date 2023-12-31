@@ -67,7 +67,7 @@ exports.isStudent = async (req, res, next) => {
 
         next(); // move on to next middleware function
     } catch (error) {
-        return res.status(500).json({
+        return res.status(403).json({
             success: false,
             message: "User's role can't be verified, Please try again later",
             error: error.message
@@ -92,7 +92,7 @@ exports.isInstructor = async (req, res, next) => {
 
         next(); // move on to next middleware function
     } catch (error) {
-        return res.status(500).json({
+        return res.status(403).json({
             success: false,
             message: "User's role can't be verified, Please try again later",
             error: error.message
@@ -117,7 +117,7 @@ exports.isAdmin = async (req, res, next) => {
 
         next(); // move on to next middleware function
     } catch (error) {
-        return res.status(500).json({
+        return res.status(403).json({
             success: false,
             message: "User's role can't be verified, Please try again later",
             error: error.message

@@ -51,7 +51,11 @@ exports.generateForgotPasswordToken = async (req, res) => {
         });
 
     } catch (error) {
-        
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong while generating token, please try again later",
+            error: error.message
+        });
     }
 }
 
@@ -109,7 +113,7 @@ exports.resetForgotPassword = async (req, res) => {
         });
 
     } catch (error) {
-        return res.status(401).json({
+        return res.status(500).json({
             success: false,
             message: "Something went wrong while resetting password, please try again later",
             error: error.message
