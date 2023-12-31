@@ -49,8 +49,70 @@ exports.generateForgotPasswordToken = async (req, res) => {
             success: true,
             message: "Email sent successfully, please check your email"
         });
-        
+
     } catch (error) {
         
+    }
+}
+
+// Reset forgot password
+exports.resetForgotPassword = async (req, res) => {
+    try {
+        // fetch data from req body
+        const { token, password, confirmPassword } = req.body;
+
+        // validation (check if all fields are present or not)
+        if(!token || !password || !confirmPassword) {
+            return res.status(403).json({
+                success: false,
+                message: "All fields are required"
+            });
+        }
+
+        // check if password and confirm password are same or not
+        if(password !== confirmPassword) {
+            return res.status(403).json({
+                success: false,
+                message: "Password and Confirm Password must be same"
+            });
+        }
+
+        // fetch user from DataBase using token
+        const user = await User.findOne({ token: token });
+
+        // if user not found
+        if(!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid token"
+            });
+        }
+
+        // check if token is expired or not
+        if(user.expires < Date.now()) {
+            return res.status(401).json({
+                success: false,
+                message: "Token is expired, Please regenerate your token"
+            });
+        }
+
+        // hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // update password in DataBase
+        await User.findOneAndUpdate({token: token}, {password: hashedPassword}, {new: true});
+
+        // send response
+        res.status(200).json({
+            success: true,
+            message: "Password updated successfully"
+        });
+
+    } catch (error) {
+        return res.status(401).json({
+            success: false,
+            message: "Something went wrong while resetting password, please try again later",
+            error: error.message
+        });
     }
 }
