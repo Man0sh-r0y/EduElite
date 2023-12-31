@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const OTP = require('../models/OTP');
+const mailSender = require('../utils/mailSender');
 const otpGenerator = require('otp-generator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -247,13 +248,24 @@ exports.changePassword = async (req, res) => {
         const hashedPassword = await bcrypt.hash(newPassword, 10);
 
         // Update password in DataBase
-        const user = await User.findByIdAndUpdate(req.user.id, { password: hashedPassword }, { new: true });
+        const user = await User.findOneAndUpdate({ oldPassword }, { password: hashedPassword }, { new: true }); // find user by old password and update password with new password
         // if I would haven't used { new: true } then it would have returned the old document
 
         // Send Mail of password updation
+        await mailSender(user.email, "Password Updated", "Your password has been updated successfully");
+
+        // Return response
+        return res.status(200).json({
+            success: true,
+            message: "Password updated successfully"
+        });
         
     } catch (error) {
-        
+        return res.status(500).json({
+            success: false,
+            message: "Error occurred while chnaging password",
+            error: error.message
+        });
     }
 }
 
