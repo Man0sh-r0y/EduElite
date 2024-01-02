@@ -18,11 +18,11 @@ const tagSchema = new mongoose.Schema({
         required: true, // defining the constraint
         trim: true, // removes whitespace from both ends of a string
     },
-    course: {
+    course: [{
         type: mongoose.Schema.Types.ObjectId, // defining the data type
         required: true, // defining the constraint
         ref: 'Course' // referencing the Course model
-    }
+    }] // array of courses as a tag can have multiple courses
 });
 
 module.exports = mongoose.model('Tag', tagSchema); // exporting the model
