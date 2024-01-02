@@ -182,14 +182,14 @@ exports.login = async (req, res) => {
         if(await bcrypt.compare(password, user.password)) {
 
             // required options for JWT token
-            const options = {
+            const payload = {
                 id : user._id,
                 email: user.email,
                 accountType: user.accountType,
             }
 
             // generate JWT token
-            const token = jwt.sign(options, process.env.JWT_SECRET, {
+            const token = jwt.sign(payload, process.env.JWT_SECRET, {
                 expiresIn: '2h' // token will be expired after 2 hours
             });
 
