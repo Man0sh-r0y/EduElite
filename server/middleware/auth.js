@@ -30,6 +30,7 @@ exports.auth = async (req, res, next) => {
             req.user = decodedPayload; // set user in req object
             // as later we will use it for authentication and authorization. 
             // We will be able to fetch user details by req.user
+            // this decodedPayload contains user's id, email and accountType
 
         } catch (error) {
             return res.status(401).json({
