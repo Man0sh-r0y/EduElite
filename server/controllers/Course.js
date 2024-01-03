@@ -3,6 +3,16 @@ const Category = require('../models/Category');
 const User = require('../models/User');
 const {uploadImageToCloudinary} = require('../utils/imageUploader');
 
+// Course Creation:
+// 1. Fetch data from request body 
+// 2. Validate the data
+// 3. Check if the user is instructor or not as only instructor can create a course
+// 4. Check if the category exists or not as instructor can only create a course in existing category 
+// As anyone can can send a custom category through postman while API call. Only admin can create a new category
+// 5. Upload thumbnail to cloudinary
+// 6. Create an entry for new course in database
+// 7. Add the newly created course to the instructor's courses array
+
 // Create course
 exports.createCourse = async (req, res) => {
     try {
