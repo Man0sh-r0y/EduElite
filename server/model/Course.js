@@ -45,9 +45,9 @@ const courseSchema = new mongoose.Schema({
         required: true, // defining the constraint
         trim: true, // removes whitespace from both ends of a string
     },
-    tag: {
+    category: {
         type: mongoose.Schema.Types.ObjectId, // defining the data type
-        ref: 'Tag' // referencing the Tag model
+        ref: 'Category' // referencing the Tag model
     },
     studentEnrolled: [{
         type: mongoose.Schema.Types.ObjectId, // defining the data type
