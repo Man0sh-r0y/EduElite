@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');  // importing mongoose library
 
-// In the homepage there will be a catalog of courses.
-// there will be listed course names which are called tags
-// If you click on any tag, you will go to another page
-// each tag will have its name, description and courses which are related to that tag
-// suppose a  tag is 'web development'. If you click on the tag you will see will have its name and description and courses which are related to web development
+// In the homepage there will be a catalog of course (Categories)
+// there will be listed course names
+// If you click on any Category, you will go to another page
+// each Category will have its name, description and courses which are related to that category
+// suppose a  Category is 'web development'. If you click on the category you will see it will have its name and description and courses which are related to web development
 
-// creating a schema for tags
+// creating a schema for course categories
 const categorySchema = new mongoose.Schema({
     name: {
         type: String, // defining the data type
