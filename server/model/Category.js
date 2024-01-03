@@ -7,7 +7,7 @@ const mongoose = require('mongoose');  // importing mongoose library
 // suppose a  tag is 'web development'. If you click on the tag you will see will have its name and description and courses which are related to web development
 
 // creating a schema for tags
-const tagSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
     name: {
         type: String, // defining the data type
         required: true, // defining the constraint
@@ -25,4 +25,4 @@ const tagSchema = new mongoose.Schema({
     }] // array of courses as a tag can have multiple courses
 });
 
-module.exports = mongoose.model('Tag', tagSchema); // exporting the model
+module.exports = mongoose.model('Category', categorySchema); // exporting the model
