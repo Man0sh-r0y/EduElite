@@ -1,4 +1,4 @@
-# StudyNotion 
+# Full Stack EdTech Platform
 ⚠️ This project is under development
 
 ## Test Users
