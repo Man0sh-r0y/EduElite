@@ -51,7 +51,7 @@ exports.updateProfile = async (req, res) => {
         //return response
         return res.status(200).json({
             success: true,
-            message: "Profile Updated Successfully",
+            message: `Profile of User ${userDetails.firstName} ${userDetails,lastName} has been Updated Successfully`,
             profileDetails: profileDetails
         });
 
@@ -63,6 +63,16 @@ exports.updateProfile = async (req, res) => {
         });
     }
 };
+
+// DELETE ACCOUNT
+// 1. Fetch data from request body
+// 2. Validate the data wheather all required fields are present or not
+// 3. Find the user
+// 4. Unenroll the user from all the courses
+// 5. Delete the profile
+// 6. Delete the user
+// 7. Schedule the deletion of the user
+// 8. Return the response
 
 // Delete the account
 exports.deleteAccount = async (req, res) => {
