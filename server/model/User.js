@@ -49,7 +49,11 @@ const userSchema = new mongoose.Schema({
     courseProgress: [{
         type: mongoose.Schema.Types.ObjectId, // defining the data type
         ref: 'CourseProgress', // defining the reference
-    }] // array of course progresses
+    }], // array of course progresses
+    scheduleDelete: {
+        type: Boolean,
+        default: false
+    }
     
 });
 

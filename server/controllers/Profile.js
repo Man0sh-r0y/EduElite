@@ -1,0 +1,198 @@
+const Profile = require("../models/Profile");
+const User = require("../models/User");
+const Course = require("../models/Course");
+const schedule = require('node-schedule');
+
+// UPDATE PROFILE:
+// 1. Fetch data from request body
+// 2. Validate the data wheather all required fields are present or not
+// 3. Find the profile 
+// 4. Update the profile
+// 5. Return the response
+
+// Update the profile
+exports.updateProfile = async (req, res) => {
+
+    try {
+        //get data from request body
+        const { dateOfBirth = "", about = "", contactNumber, gender } = req.body;
+
+        // get userId from req.user as we have set the user id in req.user.id while authenticating the user in auth.js middleware
+        const id = req.user.id;
+
+        // validation check
+        if (!contactNumber || !gender) {
+            return res.status(400).json({
+                success: false,
+                message: "All fields are required",
+            });
+        }
+
+        //find the user's profile through user's id
+        const userDetails = await User.findById(id);
+
+        if(!userDetails){
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        const profileId = userDetails.additionalDetails; // additionalDetails is the id of profile of that user
+        const profileDetails = await Profile.findById(profileId);
+
+        //update profile
+        profileDetails.dateOfBirth = dateOfBirth;
+        profileDetails.about = about;
+        profileDetails.gender = gender;
+        profileDetails.contactNumber = contactNumber;
+        await profileDetails.save();
+
+        //return response
+        return res.status(200).json({
+            success: true,
+            message: "Profile Updated Successfully",
+            profileDetails: profileDetails
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Profile cannot be updated",
+            error: error.message
+        });
+    }
+};
+
+// Delete the account
+exports.deleteAccount = async (req, res) => {
+
+    try {
+        //get id from req.user
+        const id = req.user.id;
+        
+        // Fetch the user details
+        const userDetails = await User.findById(id);
+
+        // check if the user exists or not
+        if (!userDetails) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        // Schedule the deletion of User
+        const deleteOnDate = new Date() + 5 * 24 * 60 * 60 * 1000; // delete after 5 days from now
+        const scheduleDelete = userDetails.scheduleDelete;
+        scheduleDelete = true;
+        await userDetails.save();
+
+        schedule.scheduleJob(deleteOnDate, async function () {
+            try {
+                if (scheduleDelete) {
+                    // unenroll user from all the courses
+                    const courses = userDetails.courses; // get the courses array from user details
+                    for (let i = 0; i < courses.length; i++) {
+                        const courseID = courses[i]; // get the course id
+                        await Course.findByIdAndUpdate(courseID, {
+                            $pull: {
+                                studentEnrolled: id // remove the user from studentEnrolled array of that course
+                            }
+                        });
+                    }
+                    await Profile.findByIdAndDelete({ _id: userDetails.additionalDetails }); // delete the profile
+                    await User.findByIdAndDelete({ _id: id }); // delete the user
+                    console.log(`User ${userDetails.firstName} ${userDetails,lastName} Deleted successfully`);
+                }
+            } catch (error) {
+                
+            }
+        });
+
+
+        //return response
+        return res.status(200).json({
+            success: true,
+            message: `User account of ${userDetails.firstName} ${userDetails,lastName} will be deleted after 5 Days`,
+            userDetails: userDetails
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "User cannot be deleted",
+            error: error.message
+        });
+    }
+};
+
+// Cancel the deletion of account
+exports.cancelDeleteAccount = async (req, res) => {
+
+    try {
+        //get id from req.user
+        const id = req.user.id;
+
+        // Fetch the user details
+        const userDetails = await User.findById(id);
+
+        // check if the user exists or not
+        if (!userDetails) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        // cancel the deletion of user
+        const scheduleDelete = userDetails.scheduleDelete;
+
+        if (!scheduleDelete) {
+            return res.status(400).json({
+                success: false,
+                message: `User account of ${userDetails.firstName} ${userDetails,lastName} is not scheduled for deletion`
+            });
+        }
+
+        scheduleDelete = false;
+        await userDetails.save();
+
+        //return response
+        return res.status(200).json({
+            success: true,
+            message: `User account of ${userDetails.firstName} ${userDetails,lastName} recovery initiated`,
+            userDetails: userDetails
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "User account cannot be deleted",
+            error: error.message
+        });
+    }
+};
+
+// Get all details of User
+exports.getAllDetailsOfUser = async (req, res) => {
+
+    try {
+        //get id from req.user
+        const id = req.user.id;
+
+        //validation and get user details
+        const userDetails = await User.findById(id).populate("additionalDetails").exec();
+
+        //return response
+        return res.status(200).json({
+            success: true,
+            message: "User Data Fetched Successfully",
+            userDetails: userDetails
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "User details can't be fetched",
+            error: error.message
+        });
+    }
+};
