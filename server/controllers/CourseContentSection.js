@@ -1,6 +1,13 @@
 const CourseContentSection = require("../models/CourseContentSection");
 const Course = require("../models/Course");
 
+// CREATE THE COURSE CONTENT SECTION
+// 1. Fetch data from Req body
+// 2. Create the course content section
+// 3. Push the newly created section to the courseContent array in Course model
+// 4. populate the courseContentSection and courseContentSubSection from the Course model
+
+// Create the Course Content Section
 exports.createSection = async (req, res) => {
 
     try {
@@ -42,6 +49,7 @@ exports.createSection = async (req, res) => {
     }
 }
 
+// Update the Course Content Section
 exports.updateSection = async (req, res) => {
 
     try {
@@ -77,7 +85,13 @@ exports.updateSection = async (req, res) => {
     }
 };
 
+// DELETE THE COURSE CONTENT SECTION
+// 1. Fetch data from Req params
+// 2. Fetch the section
+// 3. Delete the section from the courseContent array in Course model
+// 4. Delete the section from the database
 
+// Delete the Course Content Section
 exports.deleteSection = async (req, res) => {
 
     try {

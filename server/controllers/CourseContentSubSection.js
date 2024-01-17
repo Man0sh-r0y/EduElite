@@ -2,6 +2,15 @@ const CourseContentSubSection = require("../models/CourseContentSubSection");
 const CourseContentSection = require("../models/CourseContentSection");
 const { uploadMediaToCloudinary } = require("../utils/mediaUploader");
 
+// CREATE THE COURSE CONTENT SUBSECTION
+// 1. Fetch data from Req body
+// 2. Extract file/video from req.files
+// 3. Validation of data
+// 4. Upload the video to cloudinary
+// 5. Create a sub-section
+// 6. Update the Course Content Section with this Course Content Sub Section ObjectId
+// 7. populate the courseContentSection
+
 // Create Course Content SubSection
 exports.createSubSection = async (req, res) => {
 
@@ -53,6 +62,14 @@ exports.createSubSection = async (req, res) => {
         })
     }
 };
+
+// UPDATE THE COURSE CONTENT SUBSECTION
+// 1. Fetch data from Req body
+// 2. Fetch the sub-section
+// 3. Validation of data
+// 4. Validating each data field seperately as user can update any field or all fields
+// 5. Update the data fields
+// 6. Save the updated sub-section
 
 // Update the Course Content SubSection
 exports.updateSubSection = async (req, res) => {
@@ -106,6 +123,12 @@ exports.updateSubSection = async (req, res) => {
         })
     }
 };
+
+// DELETE THE COURSE CONTENT SUBSECTION\
+// 1. Fetch data from Req body
+// 2. Remove the Sub Section ObjectId from Course Content Section
+// 3. Delete the sub-section
+// 4. Validate the data
 
 // Delete the Course Content SubSection
 exports.deleteSubSection = async (req, res) => {
