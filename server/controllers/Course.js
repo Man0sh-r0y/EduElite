@@ -17,7 +17,7 @@ const { uploadMediaToCloudinary } = require('../utils/mediaUploader');
 exports.createCourse = async (req, res) => {
     try {
         // fetch data and files from request body
-        const {courseName, courseDescription, whatYouWillLearn, price, category} = req.body;
+        const {courseName, courseDescription, whatYouWillLearn, price, tag, category} = req.body;
         const {thumbnail} = req.files;
 
         // validation check
@@ -60,6 +60,7 @@ exports.createCourse = async (req, res) => {
             instructor: userID,
             whatYouWillLearn,
             price,
+            tag,
             category,
             thumbnail: thumbnailImage.secure_url
         });
