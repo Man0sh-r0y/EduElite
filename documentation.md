@@ -25,7 +25,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 2. `Payment Stage 2`: Order State is attempted and Payment state is authorized/faild (An order movesfrom created to attempted state when payment is first attempted. It remains in this state until apayment associated with the order is captured.)
    
 3. `Payment Stage 3`: Order State is paid and Payment state is captured (After the payment moves to the captured state, the order moves to the paid state. No more payment requests are allowed after an order moves to the paid state. The order continues to be in this state even if the payment for this order is refunded.)
->Order is an important step in the payment process.
+> Order is an important step in the payment process.
 > - An order should be created for every payment.
 > - You can create an order using the Orders API. It is a server-side API call. Know how toauthenticate Orders API.
 > - The `order_id` received in the response should be passed to the checkout. This ties the orderwith the payment and secures the request from being tampered. 
@@ -41,7 +41,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
    ```js
     const Razorpay = require('razorpay'); 
     require('dotenv').config();
-    
+
     var instance = new Razorpay({
         key_id: process.env.RAZORPAY_KEY,
         key_secret: process.env.RAZORPAY_SECRET
