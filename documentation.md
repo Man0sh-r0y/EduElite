@@ -2,7 +2,21 @@
 
 This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
-## Razorpay Integration in Backend (Build Integration)
+## Razorpay Integration in Backend 
+
+### How Razorpay works in Node.Js?
+
+- User Click on `Buy Now` button
+- The `product id` is fetched and sent to the Server
+- Product Price is fetched through this id from the database
+- This price is sent to the RazorPay API along with additional details like `currency`, `receipt` etc
+- An `order id` sent to the Response
+- We are going to pass this `order id` to check out
+- After succesfull payment, Razorpay send `razorpay_payment_id`, `razorpay_signature`, `razorpay_order_id` in response
+- We send them in our server to verify payment
+- After verifying payment, We perform post tasks which are needed to do (Like Give access of the Course to Student) 
+
+### Build Integration
 
 1. **Create an Order in Server**: 
    1. `Payment Stage 1`: Order State is created and payment state is also created. (Cutomer clicks on Buy Now button and submits the payment information which is sent to Razorpay But the payment isn't processed at this stage)
