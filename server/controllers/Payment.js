@@ -33,7 +33,7 @@ exports.capturePayment = async (req, res) => {
         // Convert userId to ObjectId as it is stored as ObjectId in the database
         const userObjectId = new mongoose.Types.ObjectId(userId); // userId could be a string or another type 
         // Check if the user is already enrolled in the course
-        course.studentEnrolled.forEach((studentId) => { // studentEnrolled is an array of ObjectIds of students enrolled in the course
+        course?.studentEnrolled.forEach((studentId) => { // studentEnrolled is an array of ObjectIds of students enrolled in the course
             // As here I'm comparing userObjectId with studentId,so I've converted userId's format to ObjectId above
             // Comparing couldn't take place directly as userId is a string and studentId is an ObjectId
             if (studentId.equals(userObjectId)) {
@@ -97,14 +97,30 @@ exports.verifySignature = async (req, res) => {
         }
 
         const sign = razorpay_order_id + "|" + razorpay_payment_id; // Concatenating the order_id and payment_id as per the documentation of Razorpay
-        //const generatedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET).update(sign.toString()).digest('hex'); 
-        const hmac = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET); // createHmac() method is used to create HMAC objects
-        // createHmac() method is used to create HMAC objects
-        // sha256 is the hashing algorithm used to create HMAC
-        // update() method is used to update the HMAC object with the given data (sign.toString())
-        // digest() method is used to return the encoded HMAC data in the desired format
-        // hex is the desired format in which the encoded HMAC data is returned
-    } catch (error) {
+
+        const hmac = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET); // createHmac() method is used to create HMAC objects and sha256 is the hashing algorithm used to create HMAC
+        hmac.update(sign.toString()); // update() method is used to update the HMAC object with the given data (sign.toString())
+        const generatedSignature = hmac.digest('hex'); // digest() method is used to return the encoded HMAC data in the desired format (hex)
+
+        // Compare the generatedSignature with the razorpay_signature
+        if (generatedSignature === razorpay_signature) {
+            return res.status(200).json({
+                success: false,
+                message: 'Payment verification successful'
+            });
+        }
+
+        // If the signatures don't match
+        return res.status(400).json({
+            success: false,
+            message: 'Payment verification failed as the razorpay signatures did not match'
+        });
         
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Error occured while verifying razorpay signature",
+            error: error.message
+        })
     }
 };
