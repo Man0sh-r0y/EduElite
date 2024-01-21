@@ -18,7 +18,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 ### Build Integration
 
-**Payment Status**: 
+**Payment Stages**: 
 
 1. `Payment Stage 1`: Order State is created and payment state is also created. (Cutomer clicks on Buy Now button and submits the payment information which is sent to Razorpay But the payment isn't processed at this stage)
 
@@ -32,10 +32,25 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
  
 ### Follow the below steps to integrate your Node.js-based website/app with Razorpay Payment Gateway.
 
-1. Install Razorpay Node.js SDK.
-1. Instantiate Razorpay.
-1. Create an Order in Server.
-1. Add Checkout Options.
-1. Store Fields in Server.
-1. Verify Payment Signature.
-1. Verify Payment Status.
+1. `Install Razorpay Node.js SDK`.
+   ```bash
+    npm install razorpay
+   ```
+2. `Instantiate Razorpay`.
+   Add this code in the `config` directory of your backend code structure. This code snippet is importing the razorpay module in a Node.js application and then creating an instance of the Razorpay class. This instance is configured with the key_id and key_secret obtained from environment variables.
+   ```bash
+    const Razorpay = require('razorpay'); // Importing razorpay module
+
+    // Instantiate Razorpay with our razorpay key_id and key_secret
+    var instance = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY,
+        key_secret: process.env.RAZORPAY_SECRET
+    });
+
+    module.exports = instance; // Exporting the instance to be used in other files
+   ```
+3. `Create an Order in Server`.
+4. Add Checkout Options`.
+5. `Store Fields in Server`.
+6. `Verify Payment Signature`.
+7. `Verify Payment Status`.
