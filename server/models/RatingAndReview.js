@@ -16,6 +16,11 @@ const ratingAndReviewSchema = new mongoose.Schema({
     review: {
         type: String, // defining the data type
         required: true, // defining the constraint
+    },
+    course: {
+        type: mongoose.Schema.Types.ObjectId, // defining the data type
+        required: true, // defining the constraint
+        ref: 'Course' // referencing the Course model
     }
 });
 
