@@ -38,7 +38,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
    ```
 2. **Instantiate Razorpay**:
    Add this code in the `config` directory of your backend code structure. This code snippet is importing the razorpay module in a Node.js application and then creating an instance of the Razorpay class. This instance is configured with the key_id and key_secret obtained from environment variables.
-   ```bash
+   ```js
     const Razorpay = require('razorpay'); 
 
     var instance = new Razorpay({
