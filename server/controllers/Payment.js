@@ -98,6 +98,9 @@ exports.verifySignature = async (req, res) => {
 
         const sign = razorpay_order_id + "|" + razorpay_payment_id; // Concatenating the order_id and payment_id as per the documentation of Razorpay
 
+        // HMAC stands for Hash-based Message Authentication Code
+        // HMAC is a specific type of message authentication code involving a cryptographic hash function and a secret key
+        // It is commonly used for data integrity and authentication.
         const hmac = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET); // createHmac() method is used to create HMAC objects and sha256 is the hashing algorithm used to create HMAC
         hmac.update(sign.toString()); // update() method is used to update the HMAC object with the given data (sign.toString())
         const generatedSignature = hmac.digest('hex'); // digest() method is used to return the encoded HMAC data in the desired format (hex)
