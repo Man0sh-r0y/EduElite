@@ -32,11 +32,11 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
  
 ### Follow the below steps to integrate your Node.js-based website/app with Razorpay Payment Gateway.
 
-1. `Install Razorpay Node.js SDK`.
+1. **Install Razorpay Node.js SDK**: Open your project folder and run the following command on your command prompt to install the Razorpay Node.js SDK:
    ```bash
     npm install razorpay
    ```
-2. `Instantiate Razorpay`.
+2. **Instantiate Razorpay**:
    Add this code in the `config` directory of your backend code structure. This code snippet is importing the razorpay module in a Node.js application and then creating an instance of the Razorpay class. This instance is configured with the key_id and key_secret obtained from environment variables.
    ```bash
     const Razorpay = require('razorpay'); // Importing razorpay module
@@ -49,8 +49,8 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
     module.exports = instance; // Exporting the instance to be used in other files
    ```
-3. `Create an Order in Server`.
-4. Add Checkout Options`.
-5. `Store Fields in Server`.
-6. `Verify Payment Signature`.
-7. `Verify Payment Status`.
+3. **Create an Order in Server**:
+4. **Add Checkout Options**:
+5. **Store Fields in Server**:
+6. **Verify Payment Signature**:
+7. **Verify Payment Status**:
