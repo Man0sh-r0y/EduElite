@@ -5,66 +5,63 @@ const mailSender = require("../utils/mailSender");
 const { courseEnrollmentEmail } = require("../mail/templates/courseEnrollmentEmail");
 const { default: mongoose } = require("mongoose");
 
-//capture the payment and initiate the Razorpay order
+// Capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) => {
-    //get courseId and UserID
-    const { course_id } = req.body;
-    const userId = req.user.id;
-    //validation
-    //valid courseID
-    if (!course_id) {
-        return res.json({
-            success: false,
-            message: 'Please provide valid course ID',
-        })
-    };
-    //valid courseDetail
-    let course;
+
     try {
-        course = await Course.findById(course_id);
+        // Get the courseId and UserId from the request body
+        const { courseId } = req.body;
+        const userId = req.user.id;
+
+        // Validation checks for courseId and userId
+        if (!courseId) {
+            return res.json({
+                success: false,
+                message: 'Course id not found'
+            });
+        }
+
+        // Validate course Details
+        const course = await Course.findById(courseId);
         if (!course) {
             return res.json({
                 success: false,
-                message: 'Could not find the course',
+                message: 'Could not find the course'
             });
         }
 
-        //user already pay for the same course
-        const uid = new mongoose.Types.ObjectId(userId);
-        if (course.studentsEnrolled.includes(uid)) {
-            return res.status(200).json({
-                success: false,
-                message: 'Student is already enrolled',
-            });
-        }
-    }
-    catch (error) {
-        console.error(error);
-        return res.status(500).json({
-            success: false,
-            message: error.message,
+        // Convert userId to ObjectId as it is stored as ObjectId in the database
+        const userObjectId = new mongoose.Types.ObjectId(userId); // userId could be a string or another type 
+        // Check if the user is already enrolled in the course
+        course.studentEnrolled.forEach((studentId) => { // studentEnrolled is an array of ObjectIds of students enrolled in the course
+            // As here I'm comparing userObjectId with studentId,so I've converted userId's format to ObjectId above
+            // Comparing couldn't take place directly as userId is a string and studentId is an ObjectId
+            if (studentId.equals(userObjectId)) {
+                return res.json({
+                    success: false,
+                    message: `Student is already enrolled in the course ${course.courseName}`
+                });
+            }
         });
-    }
 
-    //order create
-    const amount = course.price;
-    const currency = "INR";
+        // Create an Order
+        const options = {
+            amount: course.price * 100, // amount in the smallest currency unit
+            currency: "INR", // currency is always in INR
+            receipt: Math.random(Date.now()).toString(), // ideally it should be the order id
+            notes: { // notes is an optional parameter
+                courseId: courseId,
+                userId: userId
+            }
+        };
 
-    const options = {
-        amount: amount * 100,
-        currency,
-        receipt: Math.random(Date.now()).toString(),
-        notes: {
-            courseId: course_id,
-            userId,
-        }
-    };
-
-    try {
-        //initiate the payment using razorpay
+        // Now initiate the payment using razorpay
+        // When the order is created successfully, an order_id is returned in the response
+        // You need to store it against the order defined in your system.
         const paymentResponse = await instance.orders.create(options);
-        console.log(paymentResponse);
-        //return response
+
+        console.log(`Payment Response after creating the order: ${paymentResponse}`); // printing the response on the console
+
         return res.status(200).json({
             success: true,
             courseName: course.courseName,
@@ -74,91 +71,40 @@ exports.capturePayment = async (req, res) => {
             currency: paymentResponse.currency,
             amount: paymentResponse.amount,
         });
-    }
-    catch (error) {
-        console.log(error);
-        res.json({
+
+    } catch (error) {
+        return res.status(500).json({
             success: false,
-            message: "Could not initiate order",
-        });
+            message: "Error occured while creating order on Razorpay",
+            error: error.message
+        })
     }
-
-
 };
 
-//verify Signature of Razorpay and Server
-
+// Verify Signature of Razorpay and Server
 exports.verifySignature = async (req, res) => {
-    const webhookSecret = "12345678";
 
-    const signature = req.headers["x-razorpay-signature"];
+    try {
+        // Fetch the details of the payment
+        const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
 
-    const shasum = crypto.createHmac("sha256", webhookSecret);
-    shasum.update(JSON.stringify(req.body));
-    const digest = shasum.digest("hex");
-
-    if (signature === digest) {
-        console.log("Payment is Authorised");
-
-        const { courseId, userId } = req.body.payload.payment.entity.notes;
-
-        try {
-            //fulfil the action
-
-            //find the course and enroll the student in it
-            const enrolledCourse = await Course.findOneAndUpdate(
-                { _id: courseId },
-                { $push: { studentsEnrolled: userId } },
-                { new: true },
-            );
-
-            if (!enrolledCourse) {
-                return res.status(500).json({
-                    success: false,
-                    message: 'Course not Found',
-                });
-            }
-
-            console.log(enrolledCourse);
-
-            //find the student andadd the course to their list enrolled courses me 
-            const enrolledStudent = await User.findOneAndUpdate(
-                { _id: userId },
-                { $push: { courses: courseId } },
-                { new: true },
-            );
-
-            console.log(enrolledStudent);
-
-            //mail send krdo confirmation wala 
-            const emailResponse = await mailSender(
-                enrolledStudent.email,
-                "Congratulations from CodeHelp",
-                "Congratulations, you are onboarded into new CodeHelp Course",
-            );
-
-            console.log(emailResponse);
-            return res.status(200).json({
-                success: true,
-                message: "Signature Verified and COurse Added",
-            });
-
-
-        }
-        catch (error) {
-            console.log(error);
-            return res.status(500).json({
+        // Validate the payment details
+        if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+            return res.json({
                 success: false,
-                message: error.message,
+                message: 'Payment details not found'
             });
         }
-    }
-    else {
-        return res.status(400).json({
-            success: false,
-            message: 'Invalid request',
-        });
-    }
 
-
+        const sign = razorpay_order_id + "|" + razorpay_payment_id; // Concatenating the order_id and payment_id as per the documentation of Razorpay
+        //const generatedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET).update(sign.toString()).digest('hex'); 
+        const hmac = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET); // createHmac() method is used to create HMAC objects
+        // createHmac() method is used to create HMAC objects
+        // sha256 is the hashing algorithm used to create HMAC
+        // update() method is used to update the HMAC object with the given data (sign.toString())
+        // digest() method is used to return the encoded HMAC data in the desired format
+        // hex is the desired format in which the encoded HMAC data is returned
+    } catch (error) {
+        
+    }
 };
