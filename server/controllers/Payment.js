@@ -5,6 +5,15 @@ const mailSender = require("../utils/mailSender");
 const { courseEnrollmentEmail } = require("../mail/templates/courseEnrollmentEmail");
 const { default: mongoose } = require("mongoose");
 
+// CAPTURE PAYMENT
+// 1. When the student makes the payment, the payment is captured and the student is enrolled in the course
+// 2. Get the courseId and userId from the request body
+// 3. Validate the courseId and userId
+// 4. Check if the user is already enrolled in the course
+// 5. Create an Order
+// 6. Initiate the payment using razorpay
+// 7. When the order is created successfully, an order_id is returned in the response
+
 // Capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) => {
 
