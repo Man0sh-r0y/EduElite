@@ -87,22 +87,22 @@ exports.createCourse = async (req, res) => {
     }
 }
 
-// Get all Courses 
+// Get all the Courses 
 exports.showAllCourses = async (req, res) => {
     try {
-        const allCourses = await Course.find({}, {
+        const allCourses = await Course.find({}, { // finding all courses data and the result should have these mentioned parameter
             courseName: true,
             price: true,
             thumbnail: true,
             instructor: true,
             ratingAndReviews: true,
             studentsEnrolled: true,
-        }); // finding all courses data and the result should have these mentioned parameter
+        }).populate("instructor").exec(); // populating the instructor field with the data of that instructor
 
         return res.status(200).json({
             success: true,
             message: 'Data for all courses fetched successfully',
-            data: allCourses,
+            data: allCourses
         })
 
     }
@@ -111,6 +111,49 @@ exports.showAllCourses = async (req, res) => {
             success: false,
             message: 'Cannot Fetch course data',
             error: error.message,
+        })
+    }
+}
+
+// Get a single Course details
+exports.getCourseDetails = async (req, res) => {
+
+    try {
+        // Fetching the course id from the request body
+        const {courseID} = req.body; 
+
+        // Find the course by id and populate the instructor field with the data of that instructor   
+        const courseDetails = await Course.findById(courseID).populate({
+            path: "instructor", // populating the instructor field with the data of that instructor
+            populate: {
+                path: "additionalDetails" // populating the additionalDetails field of that instructor
+            }
+        }).populate({
+            path: "courseContent", // populating the courseContent field with the data of that courseContent
+            populate: {
+                path: "subSection" // populating the subSection field of that courseContent
+            }
+        }).populate("category").exec(); // populating the category field with the data of that category
+
+        // Validate the course details
+        if (!courseDetails) {
+            return res.status(400).json({
+                success: false,
+                message: 'Course not found'
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: 'Course details fetched successfully',
+            data: courseDetails
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Cannot Fetch the course data',
+            error: error.message
         })
     }
 }
