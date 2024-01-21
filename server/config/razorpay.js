@@ -1,4 +1,5 @@
 const Razorpay = require('razorpay'); // Importing razorpay module
+require('dotenv').config(); // Importing dotenv module to access environment variables
 
 // Instantiate Razorpay with our razorpay key_id and key_secret
 var instance = new Razorpay({

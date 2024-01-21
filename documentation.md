@@ -40,7 +40,8 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
    Add this code in the `config` directory of your backend code structure. This code snippet is importing the razorpay module in a Node.js application and then creating an instance of the Razorpay class. This instance is configured with the key_id and key_secret obtained from environment variables.
    ```js
     const Razorpay = require('razorpay'); 
-
+    require('dotenv').config();
+    
     var instance = new Razorpay({
         key_id: process.env.RAZORPAY_KEY,
         key_secret: process.env.RAZORPAY_SECRET
