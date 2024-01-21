@@ -4,6 +4,8 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 ## Razorpay Integration in Backend 
 
+> RazorPay Docs: [Click Here](https://razorpay.com/docs/)
+
 ### How Razorpay works in Node.Js?
 
 - User Click on `Buy Now` button
