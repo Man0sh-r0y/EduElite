@@ -39,15 +39,14 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 2. **Instantiate Razorpay**:
    Add this code in the `config` directory of your backend code structure. This code snippet is importing the razorpay module in a Node.js application and then creating an instance of the Razorpay class. This instance is configured with the key_id and key_secret obtained from environment variables.
    ```bash
-    const Razorpay = require('razorpay'); // Importing razorpay module
+    const Razorpay = require('razorpay'); 
 
-    // Instantiate Razorpay with our razorpay key_id and key_secret
     var instance = new Razorpay({
         key_id: process.env.RAZORPAY_KEY,
         key_secret: process.env.RAZORPAY_SECRET
     });
 
-    module.exports = instance; // Exporting the instance to be used in other files
+    module.exports = instance; 
    ```
 3. **Create an Order in Server**:
 4. **Add Checkout Options**:
