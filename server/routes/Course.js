@@ -28,3 +28,4 @@ router.post('/delete-rating-and-review', auth, isStudent, deleteRatingAndReview)
 router.get('/get-average-rating/', getAverageRating); // Make a route for getAverageRating
 router.get('/get-all-ratings-and-reviews/', getAllRatingsAndReviews); // Make a route for getAllRatingsAndReviews
 
+module.exports = router; // Export the router so we can use it in the server.js file

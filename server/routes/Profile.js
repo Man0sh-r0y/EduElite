@@ -3,3 +3,6 @@ const router = express.Router(); // Make a router
 
 // Import the controllers
 const {updateProfile, deleteAccount, cancelDeleteAccount, getAllDetailsOfUser} = require('../controllers/Profile');
+const {auth} = require('../middleware/auth');
+
+// define the routes
