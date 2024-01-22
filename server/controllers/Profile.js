@@ -3,6 +3,7 @@ const User = require("../models/User");
 const Course = require("../models/Course");
 const schedule = require('node-schedule');
 const {uploadMediaToCloudinary} = require('../utils/mediaUploader');
+require('dotenv').config(); 
 
 // UPDATE PROFILE:
 // 1. Fetch data from request body

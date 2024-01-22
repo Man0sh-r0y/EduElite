@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const User = require('../models/User');
+require('dotenv').config();
 
 // Here I have wriiten some middleware functions
 // It can check whether a user is authenticated 

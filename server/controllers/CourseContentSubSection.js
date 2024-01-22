@@ -1,6 +1,7 @@
 const CourseContentSubSection = require("../models/CourseContentSubSection");
 const CourseContentSection = require("../models/CourseContentSection");
 const { uploadMediaToCloudinary } = require("../utils/mediaUploader");
+require('dotenv').config(); 
 
 // CREATE THE COURSE CONTENT SUBSECTION
 // 1. Fetch data from Req body

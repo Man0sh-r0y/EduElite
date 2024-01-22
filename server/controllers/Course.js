@@ -2,6 +2,7 @@ const Course = require('../models/Course');
 const Category = require('../models/Category');
 const User = require('../models/User');
 const { uploadMediaToCloudinary } = require('../utils/mediaUploader');
+require('dotenv').config(); 
 
 // Course Creation:
 // 1. Fetch data from request body 
