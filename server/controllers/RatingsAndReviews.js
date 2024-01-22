@@ -241,3 +241,34 @@ exports.getAverageRating = async (req, res) => {
         });
     }
 }
+
+// Get all ratings and reviews of a course
+exports.getAllRatingsAndReviews = async (req, res) => {
+
+    try {
+        // Get all the ratings and reviews
+        const ratingsAndReviews = await RatingAndReview.find({}).sort({
+            rating: -1 // sort in descending order
+        }).populate({
+            path: 'user', // populate the user field
+            select: 'firstName lastName email image' // select the firstName, lastName, email and image fields
+        }).populate({
+            path: 'course', // populate the course field
+            select: 'courseName' // select the courseName field
+        }).exec(); // execute the query
+        // Here select field specifies which fields to include from the related document.
+
+        return res.status(200).json({
+            success: true,
+            message: 'All ratings and reviews fetched successfully',
+            ratingsAndReviews: ratingsAndReviews
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error occurred while fetching all the ratings and reviews',
+            error: error.message
+        });
+    }
+}
