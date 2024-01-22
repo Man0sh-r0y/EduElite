@@ -36,7 +36,7 @@ exports.generateForgotPasswordToken = async (req, res) => {
         // so This token will help to fetch the user from the database in the Backend
         // so the token need to be stored in the DataBase in the user's document
 
-        const updatedUser = await User.findOneAndUpdate({ email }, { token: token, expires: Date.now() + 5 * 60 * 1000 }, { new: true }); // find user with email and add token to the user's document
+        await User.findOneAndUpdate({ email }, { token: token, expires: Date.now() + 5 * 60 * 1000 }, { new: true }); // find user with email and add token to the user's document
 
         // create URL
         const url = `http://localhost:3000/update-password/${token}`; // this URL will be sent to user's email
