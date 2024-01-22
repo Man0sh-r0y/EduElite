@@ -7,8 +7,8 @@ const {generateForgotPasswordToken, resetForgotPassword} = require('../controlle
 const {auth} = require('../middleware/auth');
 
 // define the routes
-router.post('/sendOTP', sendOTP); // Make a route for sendOTP
-router.post('/signUp', signUp); // Make a route for signUp
+router.post('/sendotp', sendOTP); // Make a route for sendOTP
+router.post('/signup', signUp); // Make a route for signUp
 router.post('/login', login); // Make a route for login
 router.post('/change-password', auth, changePassword); // Make a route for changePassword
 router.post('/forgot-password-token', generateForgotPasswordToken); // Make a route for generateForgotPasswordToken
