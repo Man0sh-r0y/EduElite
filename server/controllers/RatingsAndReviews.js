@@ -74,6 +74,7 @@ exports.updateRatingAndReview = async (req, res) => {
 
         // Get the user id
         const userId = req.user.id;
+        const user = await User.findById(userId); // finding the user by the userId
 
         const course = await Course.findById(courseId); // finding the course by the courseId
         if(!course) {
@@ -94,6 +95,14 @@ exports.updateRatingAndReview = async (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: 'Rating and Review created by the user does not exist'
+            });
+        }
+
+        // Check if the user is the owner of the rating and review
+        if(ratingAndReview.user !== new mongoose.Types.ObjectId(userId)) { // userId is in String format and ratingAndReview.user is in ObjectId format
+            return res.status(401).json({
+                success: false,
+                message: `User ${user.firstName} ${user.lastName} is not authorized to delete the rating and review`
             });
         }
 
@@ -145,7 +154,7 @@ exports.deleteRatingAndReview = async (req, res) => {
         }
 
         // Check if the user is the owner of the rating and review
-        if(ratingAndReview.user.toString() !== userId) { // userId is in String format and ratingAndReview.user is in ObjectId format
+        if(ratingAndReview.user !== new mongoose.Types.ObjectId(userId)) { // userId is in String format and ratingAndReview.user is in ObjectId format
             return res.status(401).json({
                 success: false,
                 message: `User ${user.firstName} ${user.lastName} is not authorized to delete the rating and review`
