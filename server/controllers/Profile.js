@@ -215,9 +215,9 @@ exports.updateDisplayPicture = async (req, res) => {
         // Get the display picture from req.files
         const { displayPicture } = req.files;
 
-        // Get the id from req.user
-        const id = req.user.id;
-        const user = await User.findById(id); // Find the user
+        // Get the user id from req.user
+        const userId = req.user.id;
+        const user = await User.findById(userId); // Find the user
 
         // Validate the data
         if (!displayPicture) {
@@ -254,4 +254,30 @@ exports.updateDisplayPicture = async (req, res) => {
     }
 }
 
-// 
+// Get enrolled courses of the Student
+exports.getEnrolledCourses = async (req, res) => {
+
+    try {
+        const userId = req.user.id; // get the user id from req.user
+        const user = await User.findById(userId).populate("courses").exec(); // find the user and populate the courses array
+
+        if(!user){
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: `Enrolled Courses by the Student ${user.firstName} ${user.lastName} Fetched Successfully`,
+            courses: user.courses
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Enrolled Courses of the Student cannot be fetched",
+            error: error.message
+        });
+    }
+}
