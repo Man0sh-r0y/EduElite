@@ -261,6 +261,7 @@ exports.getEnrolledCourses = async (req, res) => {
         const userId = req.user.id; // get the user id from req.user
         const user = await User.findById(userId).populate("courses").exec(); // find the user and populate the courses array
 
+        // Validate the data
         if(!user){
             return res.status(404).json({
                 success: false,
@@ -268,6 +269,7 @@ exports.getEnrolledCourses = async (req, res) => {
             });
         }
 
+        // return the response
         return res.status(200).json({
             success: true,
             message: `Enrolled Courses by the Student ${user.firstName} ${user.lastName} Fetched Successfully`,
