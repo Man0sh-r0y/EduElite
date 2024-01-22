@@ -175,3 +175,69 @@ exports.deleteRatingAndReview = async (req, res) => {
         });
     }
 }
+
+// Get average rating and review of a course
+exports.getAverageRating = async (req, res) => {
+
+    try {
+        // Fetch the course id from the request params
+        const {courseId} = req.params;
+
+        // Find the course by the id
+        const course = await Course.findById(courseId);
+
+        // Validate the course
+        if(!course) {
+            return res.status(400).json({
+                success: false,
+                message: 'Course does not exist'
+            });
+        }
+
+        // Get the average rating 
+        const averageRating = await RatingAndReview.aggregate([ // aggregate method is used to perform operations on the data
+            {
+                $match: {
+                    course: new mongoose.Types.ObjectId(courseId) // courseId is in String format but it's stored in ObjectId format in the database
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    averageRating: { $avg: '$rating' },
+                }
+            }
+        ]);
+        // The `aggregate` method is part of MongoDB's Aggregation Framework, allowing for complex data transformation and analysis.
+        // `$match` operator filters documents based on a specified condition
+        // `$group` operator groups the documents that passed through the $match stage. 
+        // The $group stage separates documents into groups according to a "group key"
+        // Use the _id field in the $group pipeline stage to set the group key
+        // The output is one document for each unique group key.
+        // In this case here, it groups all of found matches into a single group as _id is null 
+        // Here, The result is an array containing a single document with the calculated averageRating: [{ _id: null, averageRating: 4.5 }]
+
+        if(averageRating.length > 0) {
+            return res.status(200).json({
+                success: true,
+                message: `Average rating of the course ${course.courseName} fetched successfully`,
+                averageRating: averageRating[0].averageRating
+            });
+        }
+
+        // If there are no ratings and reviews for the course, then return 0
+        return res.status(200).json({
+            success: true,
+            message: `No ratings and reviews for the course ${course.courseName}`,
+            averageRating: 0
+        });
+
+        
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error occurred while fetching the average rating of the course',
+            error: error.message
+        });
+    }
+}
