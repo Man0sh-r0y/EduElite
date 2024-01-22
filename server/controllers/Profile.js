@@ -2,6 +2,7 @@ const Profile = require("../models/Profile");
 const User = require("../models/User");
 const Course = require("../models/Course");
 const schedule = require('node-schedule');
+const {uploadMediaToCloudinary} = require('../utils/mediaUploader');
 
 // UPDATE PROFILE:
 // 1. Fetch data from request body
@@ -206,3 +207,51 @@ exports.getAllDetailsOfUser = async (req, res) => {
         });
     }
 };
+
+// Update Display Picture of User Profile
+exports.updateDisplayPicture = async (req, res) => {
+
+    try {
+        // Get the display picture from req.files
+        const { displayPicture } = req.files;
+
+        // Get the id from req.user
+        const id = req.user.id;
+        const user = await User.findById(id); // Find the user
+
+        // Validate the data
+        if (!displayPicture) {
+            return res.status(400).json({
+                success: false,
+                message: "Display Picture is required"
+            });
+        }
+
+        if(!user){
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        // upload the display picture to cloudinary
+        const uploadedImage = await uploadMediaToCloudinary(displayPicture, process.env.FOLDER_NAME, 1000, 1000);
+
+        // update the display picture
+        user.image = uploadedImage.secure_url;
+        await user.save();
+
+        return res.status(200).json({
+            success: true,
+            message: `Display Picture of ${user.firstName} ${user.lastName} Updated Successfully`
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Display Picture of the user cannot be updated",
+            error: error.message
+        });
+    }
+}
+
+// 

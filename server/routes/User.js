@@ -4,6 +4,7 @@ const router = express.Router(); // Make a router
 // Import the controllers
 const {sendOTP, signUp, login, changePassword} = require('../controllers/Auth');
 const {generateForgotPasswordToken, resetForgotPassword} = require('../controllers/ForgetPassword');
+const {contactUs} = require('../controllers/ContactUs');
 const {auth} = require('../middleware/auth');
 
 // define the routes
@@ -13,5 +14,6 @@ router.post('/login', login); // Make a route for login
 router.post('/change-password', auth, changePassword); // Make a route for changePassword
 router.post('/forgot-password-token', generateForgotPasswordToken); // Make a route for generateForgotPasswordToken
 router.post('/reset-forgot-password', resetForgotPassword); // Make a route for resetForgotPassword
+router.post('/contact-us', contactUs); // Make a route for contactUs
 
 module.exports = router; // Export router
