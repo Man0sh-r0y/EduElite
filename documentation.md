@@ -260,6 +260,15 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
      http://localhost:3000/api/v1/payment/verifySignature
      ```
 
+### Contact Us Route
+
+1. **Contact Us:**
+   - **Method:** POST
+   - **API Route:**
+     ```bash
+     http://localhost:3000/api/v1/contactUs
+     ```
+
 ## Razorpay Integration in Backend 
 
 > RazorPay Docs: [Click Here](https://razorpay.com/docs/)
