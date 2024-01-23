@@ -16,9 +16,9 @@ router.get('/getCourseDetails', getCourseDetails); // Make a route for getCourse
 router.post('/createSection', auth, isInstructor, createSection); // Make a route for createSection
 router.post('/updateSection', auth, isInstructor, updateSection); // Make a route for updateSection
 router.post('/deleteSection', auth, isInstructor, deleteSection); // Make a route for deleteSection
-router.post('/createSub-section', auth, isInstructor, createSubSection); // Make a route for createSubSection
-router.post('/updateSub-section', auth, isInstructor, updateSubSection); // Make a route for updateSubSection
-router.post('/deleteSub-section', auth, isInstructor, deleteSubSection); // Make a route for deleteSubSection
+router.post('/createSubSection', auth, isInstructor, createSubSection); // Make a route for createSubSection
+router.post('/updateSubSection', auth, isInstructor, updateSubSection); // Make a route for updateSubSection
+router.post('/deleteSubSection', auth, isInstructor, deleteSubSection); // Make a route for deleteSubSection
 router.post('/createCategory', auth, isAdmin, createCategory); // Make a route for createCategory
 router.get('/showAllCategories', showAllCategories); // Make a route for showAllCategories
 router.get('/categoryPageDetails', categoryPageDetails); // Make a route for categoryPageDetails

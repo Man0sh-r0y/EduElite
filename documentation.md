@@ -157,7 +157,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
-     http://localhost:3000/api/v1/course/createSub-section
+     http://localhost:3000/api/v1/course/createSubSection
      ```
 
 8. **Update Sub-Section:**
@@ -166,7 +166,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
-     http://localhost:3000/api/v1/course/updateSub-section
+     http://localhost:3000/api/v1/course/updateSubSection
      ```
 
 9. **Delete Sub-Section:**
@@ -175,7 +175,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
-     http://localhost:3000/api/v1/course/deleteSub-section
+     http://localhost:3000/api/v1/course/deleteSubSection
      ```
 
 10. **Create Category:**
