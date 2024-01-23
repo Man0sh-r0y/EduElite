@@ -8,38 +8,44 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 1. **Send OTP:**
    - **Method**: POST 
-   - ```bash
+   - **API Route:**
+     ```bash
       http://localhost:3000/api/v1/auth/sendotp
      ```
 
 1. **Sign Up:**
    - **Method:** POST
-   - ```bash
+   - **API Route:**
+     ```bash
       http://localhost:3000/api/v1/auth/signup
      ```
 
 1. **Login:**
    - **Method:** POST
-   - ```bash
+   - **API Route:**
+     ```bash
       http://localhost:3000/api/v1/auth/login
      ```
      
 1. **Change Password:**
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
-   - ```bash
+   - **API Route:**
+     ```bash
       http://localhost:3000/api/v1/auth/changePassword
      ```
 
 1. **Generate Forgot Password Token:**
    - **Method:** POST
-   - ```bash
+   - **API Route:**
+     ```bash
       http://localhost:3000/api/v1/auth/forgotPasswordToken
      ```
 
 1. **Reset Forgot Password:**
    - **Method:** POST
-   - ```bash
+   - **API Route:**
+     ```bash
       http://localhost:3000/api/v1/auth/resetForgotPassword
      ```
 
@@ -47,51 +53,51 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 1. **Update Profile:**
    - **Method:** PUT
+   - **Authentication Required:** Yes (using middleware `auth`)
    - **API Route:**
      ```bash
      http://localhost:3000/api/v1/profile/updateProfile
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
 
-1. **Delete Account:**
+2. **Delete Account:**
    - **Method:** DELETE
+   - **Authentication Required:** Yes (using middleware `auth`)
    - **API Route:**
      ```bash
      http://localhost:3000/api/v1/profile/deleteAccount
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
 
-1. **Cancel Delete Account:**
+3. **Cancel Delete Account:**
    - **Method:** PUT
+   - **Authentication Required:** Yes (using middleware `auth`)
    - **API Route:**
      ```bash
      http://localhost:3000/api/v1/profile/cancelDeleteAccount
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
 
-1. **Get All Details Of User:**
+4. **Get All Details Of User:**
    - **Method:** GET
+   - **Authentication Required:** Yes (using middleware `auth`)
    - **API Route:**
      ```bash
      http://localhost:3000/api/v1/profile/getAllDetailsOfUser
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
 
-1. **Update Display Picture:**
+5. **Update Display Picture:**
    - **Method:** PUT
    - **API Route:**
+   - **Authentication Required:** Yes (using middleware `auth`)
      ```bash
      http://localhost:3000/api/v1/profile/updateDisplayPicture
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
 
-1. **Get Enrolled Courses:**
+6. **Get Enrolled Courses:**
    - **Method:** GET
    - **API Route:**
+   - **Authentication Required:** Yes (using middleware `auth`)
      ```bash
      http://localhost:3000/api/v1/profile/getEnrolledCourses
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
 
 
 ## Razorpay Integration in Backend 
