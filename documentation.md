@@ -43,6 +43,56 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
       http://localhost:3000/api/v1/auth/resetForgotPassword
      ```
 
+### User's Profile Routes
+
+1. **Update Profile:**
+   - **Method:** PUT
+   - **API Routes:**
+     ```bash
+     http://localhost:3000/api/v1/profile/updateProfile
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+
+1. **Delete Account:**
+   - **Method:** DELETE
+   - **API Routes:**
+     ```bash
+     http://localhost:3000/api/v1/profile/deleteAccount
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+
+1. **Cancel Delete Account:**
+   - **Method:** PUT
+   - **API Routes:**
+     ```bash
+     http://localhost:3000/api/v1/profile/cancelDeleteAccount
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+
+1. **Get All Details Of User:**
+   - **Method:** GET
+   - **API Routes:**
+     ```bash
+     http://localhost:3000/api/v1/profile/getAllDetailsOfUser
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+
+1. **Update Display Picture:**
+   - **Method:** PUT
+   - **API Routes:**
+     ```bash
+     http://localhost:3000/api/v1/profile/updateDisplayPicture
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+
+1. **Get Enrolled Courses:**
+   - **Method:** GET
+   - **API Routes:**
+     ```bash
+     http://localhost:3000/api/v1/profile/getEnrolledCourses
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+
 
 ## Razorpay Integration in Backend 
 
