@@ -103,141 +103,141 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 1. **Create Course:**
    - **Method:** POST
-   - **Endpoint:**
+   - **API Route:**
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
      http://localhost:3000/api/v1/course/createCourse
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
-   - **Role Required:** Instructor (using middleware `isInstructor`)
 
-1. **Show All Courses:**
+2. **Show All Courses:**
    - **Method:** GET
-   - **Endpoint:**
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/showAllCourses
      ```
 
-1. **Get Course Details:**
+3. **Get Course Details:**
    - **Method:** GET
-   - **Endpoint:**
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/getCourseDetails
      ```
 
-1. **Create Section:**
+4. **Create Section:**
    - **Method:** POST
    - **Endpoint:**
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
      http://localhost:3000/api/v1/course/createSection
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
-   - **Role Required:** Instructor (using middleware `isInstructor`)
 
-1. **Update Section:**
+5. **Update Section:**
    - **Method:** POST
    - **Endpoint:**
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
      http://localhost:3000/api/v1/course/updateSection
      ```
+
+6. **Delete Section:**
+   - **Method:** POST
+   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
-
-1. **Delete Section:**
-   - **Method:** POST
-   - **Endpoint:**
      ```bash
      http://localhost:3000/api/v1/course/deleteSection
      ```
+
+7. **Create Sub-Section:**
+   - **Method:** POST
+   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
-
-1. **Create Sub-Section:**
-   - **Method:** POST
-   - **Endpoint:**
      ```bash
      http://localhost:3000/api/v1/course/createSub-section
      ```
+
+8. **Update Sub-Section:**
+   - **Method:** POST
+   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
-
-1. **Update Sub-Section:**
-   - **Method:** POST
-   - **Endpoint:**
      ```bash
      http://localhost:3000/api/v1/course/updateSub-section
      ```
+
+9. **Delete Sub-Section:**
+   - **Method:** POST
+   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
-
-1. **Delete Sub-Section:**
-   - **Method:** POST
-   - **Endpoint:**
      ```bash
      http://localhost:3000/api/v1/course/deleteSub-section
      ```
-   - **Authentication Required:** Yes (using middleware `auth`)
-   - **Role Required:** Instructor (using middleware `isInstructor`)
 
-1. **Create Category:**
+10. **Create Category:**
     - **Method:** POST
-    - **Endpoint:**
+    - **API Route:**
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Admin (using middleware `isAdmin`)
       ```bash
       http://localhost:3000/api/v1/course/createCategory
       ```
-    - **Authentication Required:** Yes (using middleware `auth`)
-    - **Role Required:** Admin (using middleware `isAdmin`)
 
-1. **Show All Categories:**
+11. **Show All Categories:**
     - **Method:** GET
-    - **Endpoint:**
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/showAllCategories
       ```
 
-1. **Category Page Details:**
+12. **Category Page Details:**
     - **Method:** GET
-    - **Endpoint:**
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/categoryPageDetails
       ```
 
-1. **Create Rating And Review:**
+13. **Create Rating And Review:**
     - **Method:** POST
-    - **Endpoint:**
+    - **API Route:**
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Student (using middleware `isStudent`)
       ```bash
       http://localhost:3000/api/v1/course/createRatingAndReview
       ```
+
+14. **Update Rating And Review:**
+    - **Method:** POST
+    - **API Route:**
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Student (using middleware `isStudent`)
-
-1. **Update Rating And Review:**
-    - **Method:** POST
-    - **Endpoint:**
       ```bash
       http://localhost:3000/api/v1/course/updateRatingAndReview
       ```
+
+15. **Delete Rating And Review:**
+    - **Method:** POST
+    - **API Route:**
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Student (using middleware `isStudent`)
-
-1. **Delete Rating And Review:**
-    - **Method:** POST
-    - **Endpoint:**
       ```bash
       http://localhost:3000/api/v1/course/deleteRatingAndReview
       ```
-    - **Authentication Required:** Yes (using middleware `auth`)
-    - **Role Required:** Student (using middleware `isStudent`)
 
-1. **Get Average Rating:**
+16. **Get Average Rating:**
     - **Method:** GET
-    - **Endpoint:**
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/getAverageRating
       ```
 
-1. **Get All Ratings And Reviews:**
+17. **Get All Ratings And Reviews:**
     - **Method:** GET
-    - **Endpoint:**
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/getAllRatingsAndReviews
       ```
