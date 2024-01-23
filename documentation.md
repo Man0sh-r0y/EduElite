@@ -99,6 +99,149 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
      http://localhost:3000/api/v1/profile/getEnrolledCourses
      ```
 
+### Course Routes
+
+1. **Create Course:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/createCourse
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Show All Courses:**
+   - **Method:** GET
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/showAllCourses
+     ```
+
+1. **Get Course Details:**
+   - **Method:** GET
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/getCourseDetails
+     ```
+
+1. **Create Section:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/createSection
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Update Section:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/updateSection
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Delete Section:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/deleteSection
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Create Sub-Section:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/createSub-section
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Update Sub-Section:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/updateSub-section
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Delete Sub-Section:**
+   - **Method:** POST
+   - **Endpoint:**
+     ```bash
+     http://localhost:3000/api/v1/course/deleteSub-section
+     ```
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Instructor (using middleware `isInstructor`)
+
+1. **Create Category:**
+    - **Method:** POST
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/createCategory
+      ```
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Admin (using middleware `isAdmin`)
+
+1. **Show All Categories:**
+    - **Method:** GET
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/showAllCategories
+      ```
+
+1. **Category Page Details:**
+    - **Method:** GET
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/categoryPageDetails
+      ```
+
+1. **Create Rating And Review:**
+    - **Method:** POST
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/createRatingAndReview
+      ```
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Student (using middleware `isStudent`)
+
+1. **Update Rating And Review:**
+    - **Method:** POST
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/updateRatingAndReview
+      ```
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Student (using middleware `isStudent`)
+
+1. **Delete Rating And Review:**
+    - **Method:** POST
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/deleteRatingAndReview
+      ```
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Student (using middleware `isStudent`)
+
+1. **Get Average Rating:**
+    - **Method:** GET
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/getAverageRating
+      ```
+
+1. **Get All Ratings And Reviews:**
+    - **Method:** GET
+    - **Endpoint:**
+      ```bash
+      http://localhost:3000/api/v1/course/getAllRatingsAndReviews
+      ```
+
 
 ## Razorpay Integration in Backend 
 
