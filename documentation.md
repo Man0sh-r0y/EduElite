@@ -8,9 +8,9 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 1. **Send OTP:**
    - `Method: POST` 
-   ```bash
+   - ```bash
       http://localhost:3000/api/v1/auth/sendotp
-   ```
+     ```
 
 2. **Sign Up:**
    - `POST` http://localhost:3000/api/v1/auth/signup
