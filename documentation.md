@@ -7,22 +7,22 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 ### User Routes
 
 1. **Send OTP:**
-   - `POST` http://localhost:3000/api/v1/auth/sendotp
+   - `POST` ```bash http://localhost:3000/api/v1/auth/sendotp```
 
-1. **Sign Up:**
+2. **Sign Up:**
    - `POST` http://localhost:3000/api/v1/auth/signup
 
-1. **Login:**
+3. **Login:**
    - `POST` http://localhost:3000/api/v1/auth/login
 
-1. **Change Password:**
+4. **Change Password:**
    - `POST` http://localhost:3000/api/v1/auth/changePassword
    - Authentication Required: Yes (using middleware `auth`)
 
-1. **Generate Forgot Password Token:**
+5. **Generate Forgot Password Token:**
    - `POST` http://localhost:3000/api/v1/auth/forgotPasswordToken
 
-1. **Reset Forgot Password:**
+6. **Reset Forgot Password:**
    - `POST` http://localhost:3000/api/v1/auth/resetForgotPassword
 
 
