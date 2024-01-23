@@ -12,21 +12,36 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
       http://localhost:3000/api/v1/auth/sendotp
      ```
 
-2. **Sign Up:**
-   - `POST` http://localhost:3000/api/v1/auth/signup
+1. **Sign Up:**
+   - **Method:** POST
+   - ```bash
+      http://localhost:3000/api/v1/auth/signup
+     ```
 
-3. **Login:**
-   - `POST` http://localhost:3000/api/v1/auth/login
+1. **Login:**
+   - **Method:** POST
+   - ```bash
+      http://localhost:3000/api/v1/auth/login
+     ```
+     
+1. **Change Password:**
+   - **Method:** POST
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - ```bash
+      http://localhost:3000/api/v1/auth/changePassword
+     ```
 
-4. **Change Password:**
-   - `POST` http://localhost:3000/api/v1/auth/changePassword
-   - Authentication Required: Yes (using middleware `auth`)
+1. **Generate Forgot Password Token:**
+   - **Method:** POST
+   - ```bash
+      http://localhost:3000/api/v1/auth/forgotPasswordToken
+     ```
 
-5. **Generate Forgot Password Token:**
-   - `POST` http://localhost:3000/api/v1/auth/forgotPasswordToken
-
-6. **Reset Forgot Password:**
-   - `POST` http://localhost:3000/api/v1/auth/resetForgotPassword
+1. **Reset Forgot Password:**
+   - **Method:** POST
+   - ```bash
+      http://localhost:3000/api/v1/auth/resetForgotPassword
+     ```
 
 
 ## Razorpay Integration in Backend 
