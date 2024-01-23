@@ -14,3 +14,18 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const {cloudinaryConnect} = require('./config/cloudinary');
 const fileUpload = require('express-fileupload');
+
+// Middilewares
+app.use(express.json()); // for parsing application/json
+app.use(cookieParser()); // for parsing cookies
+app.use(cors({
+    origin: [process.env.CLIENT_URL],
+    credentials: true
+})); // for allowing cross origin requests
+
+
+// Set Up the PORT
+const PORT = process.env.PORT || 5000; // set up the port
+
+// Connect to the database
+dbConnect();
