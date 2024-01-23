@@ -85,16 +85,16 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 5. **Update Display Picture:**
    - **Method:** PUT
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/profile/updateDisplayPicture
      ```
 
 6. **Get Enrolled Courses:**
    - **Method:** GET
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/profile/getEnrolledCourses
      ```
@@ -103,9 +103,9 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 1. **Create Course:**
    - **Method:** POST
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/createCourse
      ```
@@ -126,7 +126,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 4. **Create Section:**
    - **Method:** POST
-   - **Endpoint:**
+   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
      ```bash
@@ -135,54 +135,54 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 5. **Update Section:**
    - **Method:** POST
-   - **Endpoint:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/updateSection
      ```
 
 6. **Delete Section:**
    - **Method:** POST
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/deleteSection
      ```
 
 7. **Create Sub-Section:**
    - **Method:** POST
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/createSubSection
      ```
 
 8. **Update Sub-Section:**
    - **Method:** POST
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/updateSubSection
      ```
 
 9. **Delete Sub-Section:**
    - **Method:** POST
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Instructor (using middleware `isInstructor`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/course/deleteSubSection
      ```
 
 10. **Create Category:**
     - **Method:** POST
-    - **API Route:**
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Admin (using middleware `isAdmin`)
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/createCategory
       ```
@@ -203,27 +203,27 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 13. **Create Rating And Review:**
     - **Method:** POST
-    - **API Route:**
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Student (using middleware `isStudent`)
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/createRatingAndReview
       ```
 
 14. **Update Rating And Review:**
     - **Method:** POST
-    - **API Route:**
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Student (using middleware `isStudent`)
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/updateRatingAndReview
       ```
 
 15. **Delete Rating And Review:**
     - **Method:** POST
-    - **API Route:**
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Student (using middleware `isStudent`)
+    - **API Route:**
       ```bash
       http://localhost:3000/api/v1/course/deleteRatingAndReview
       ```
@@ -246,14 +246,14 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 
 1. **Capture Payment:**
    - **Method:** POST
-   - **API Route:**
    - **Authentication Required:** Yes (using middleware `auth`)
    - **Role Required:** Student (using middleware `isStudent`)
+   - **API Route:**
      ```bash
      http://localhost:3000/api/v1/payment/capturePayment
      ```
 
-1. **Verify Signature:**
+2. **Verify Signature:**
    - **Method:** POST
    - **API Route:**
      ```bash
