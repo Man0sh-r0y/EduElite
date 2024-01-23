@@ -7,7 +7,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
 ### User Routes
 
 1. **Send OTP:**
-   - `Method: POST` 
+   - **Method**: POST 
    - ```bash
       http://localhost:3000/api/v1/auth/sendotp
      ```
