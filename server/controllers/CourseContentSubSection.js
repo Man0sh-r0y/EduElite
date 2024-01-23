@@ -31,7 +31,7 @@ exports.createSubSection = async (req, res) => {
         }
 
         // Upload the video to cloudinary
-        const videoUploadDetails = await uploadMediaToCloudinary(video, process.env.FOLDER_NAME);
+        const videoUploadDetails = await uploadMediaToCloudinary(video, process.env.CLOUDINARY_FOLDER_NAME);
 
         //create a sub-section
         const subSectionDetails = await CourseContentSubSection.create({
@@ -102,7 +102,7 @@ exports.updateSubSection = async (req, res) => {
         // Extract file/video from req.files
         if (req.files && req.files.videoFile !== undefined) { // if video is present in req.files then update the video
             const video = req.files.videoFile;
-            const uploadVideoDetails = await uploadMediaToCloudinary(video, process.env.FOLDER_NAME);
+            const uploadVideoDetails = await uploadMediaToCloudinary(video, process.env.CLOUDINARY_FOLDER_NAME);
             courseContentSubSection.videoUrl = uploadVideoDetails.secure_url; // update the video url
             courseContentSubSection.timeDuration = `${uploadVideoDetails.duration}`; // As Schema is expecting timeDuration in string format
         }

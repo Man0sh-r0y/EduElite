@@ -52,7 +52,7 @@ exports.createCourse = async (req, res) => {
         }
 
         // upload thumbnail to cloudinary
-        const thumbnailImage = await uploadMediaToCloudinary(thumbnail, process.env.FOLDER_NAME);
+        const thumbnailImage = await uploadMediaToCloudinary(thumbnail, process.env.CLOUDINARY_FOLDER_NAME);
 
         // create an entry for new course in database
         const course = await Course.create({
