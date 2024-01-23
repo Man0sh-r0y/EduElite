@@ -6,12 +6,12 @@ const {updateProfile, deleteAccount, cancelDeleteAccount, getAllDetailsOfUser, u
 const {auth} = require('../middleware/auth');
 
 // define the routes
-router.put('/update-profile', auth, updateProfile); // Make a route for updateProfile
-router.delete('/delete-account', auth, deleteAccount); // Make a route for deleteAccount
-router.put('/cancel-delete-account', auth, cancelDeleteAccount); // Make a route for cancelDeleteAccount
-router.get('/get-all-details-of-user', auth, getAllDetailsOfUser); // Make a route for getAllDetailsOfUser
-router.put('/update-display-picture', auth, updateDisplayPicture); // Make a route for updateDisplayPicture
-router.get('/get-enrolled-courses', auth, getEnrolledCourses); // Make a route for getEnrolledCourses
+router.put('/updateProfile', auth, updateProfile); // Make a route for updateProfile
+router.delete('/deleteAccount', auth, deleteAccount); // Make a route for deleteAccount
+router.put('/cancelDeleteAccount', auth, cancelDeleteAccount); // Make a route for cancelDeleteAccount
+router.get('/getAllDetailsOfUser', auth, getAllDetailsOfUser); // Make a route for getAllDetailsOfUser
+router.put('/updateDisplayPicture', auth, updateDisplayPicture); // Make a route for updateDisplayPicture
+router.get('/getEnrolledCourses', auth, getEnrolledCourses); // Make a route for getEnrolledCourses
 
 module.exports = router; // Export the router so we can use it in the server.js file
 

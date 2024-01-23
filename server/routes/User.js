@@ -10,8 +10,8 @@ const {auth} = require('../middleware/auth');
 router.post('/sendotp', sendOTP); // Make a route for sendOTP
 router.post('/signup', signUp); // Make a route for signUp
 router.post('/login', login); // Make a route for login
-router.post('/change-password', auth, changePassword); // Make a route for changePassword
-router.post('/forgot-password-token', generateForgotPasswordToken); // Make a route for generateForgotPasswordToken
-router.post('/reset-forgot-password', resetForgotPassword); // Make a route for resetForgotPassword
+router.post('/changePassword', auth, changePassword); // Make a route for changePassword
+router.post('/forgotPasswordToken', generateForgotPasswordToken); // Make a route for generateForgotPasswordToken
+router.post('/resetForgotPassword', resetForgotPassword); // Make a route for resetForgotPassword
 
 module.exports = router; // Export router

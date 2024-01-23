@@ -10,22 +10,22 @@ const {createRatingAndReview, updateRatingAndReview, deleteRatingAndReview, getA
 const {auth, isStudent, isInstructor, isAdmin} = require('../middleware/auth');
 
 // define the routes
-router.post('/create-course', auth, isInstructor, createCourse); // Make a route for createCourse
-router.get('/show-all-courses', showAllCourses); // Make a route for showAllCourses
-router.get('/get-course-details', getCourseDetails); // Make a route for getCourseDetails
-router.post('/create-section', auth, isInstructor, createSection); // Make a route for createSection
-router.post('/update-section', auth, isInstructor, updateSection); // Make a route for updateSection
-router.post('/delete-section', auth, isInstructor, deleteSection); // Make a route for deleteSection
-router.post('/create-sub-section', auth, isInstructor, createSubSection); // Make a route for createSubSection
-router.post('/update-sub-section', auth, isInstructor, updateSubSection); // Make a route for updateSubSection
-router.post('/delete-sub-section', auth, isInstructor, deleteSubSection); // Make a route for deleteSubSection
-router.post('/create-category', auth, isAdmin, createCategory); // Make a route for createCategory
-router.get('/show-all-categories', showAllCategories); // Make a route for showAllCategories
-router.get('/category-page-details', categoryPageDetails); // Make a route for categoryPageDetails
-router.post('/create-rating-and-review', auth, isStudent, createRatingAndReview); // Make a route for createRatingAndReview
-router.post('/update-rating-and-review', auth, isStudent, updateRatingAndReview); // Make a route for updateRatingAndReview
-router.post('/delete-rating-and-review', auth, isStudent, deleteRatingAndReview); // Make a route for deleteRatingAndReview
-router.get('/get-average-rating/', getAverageRating); // Make a route for getAverageRating
-router.get('/get-all-ratings-and-reviews/', getAllRatingsAndReviews); // Make a route for getAllRatingsAndReviews
+router.post('/createCourse', auth, isInstructor, createCourse); // Make a route for createCourse
+router.get('/showAllCourses', showAllCourses); // Make a route for showAllCourses
+router.get('/getCourseDetails', getCourseDetails); // Make a route for getCourseDetails
+router.post('/createSection', auth, isInstructor, createSection); // Make a route for createSection
+router.post('/updateSection', auth, isInstructor, updateSection); // Make a route for updateSection
+router.post('/deleteSection', auth, isInstructor, deleteSection); // Make a route for deleteSection
+router.post('/createSub-section', auth, isInstructor, createSubSection); // Make a route for createSubSection
+router.post('/updateSub-section', auth, isInstructor, updateSubSection); // Make a route for updateSubSection
+router.post('/deleteSub-section', auth, isInstructor, deleteSubSection); // Make a route for deleteSubSection
+router.post('/createCategory', auth, isAdmin, createCategory); // Make a route for createCategory
+router.get('/showAllCategories', showAllCategories); // Make a route for showAllCategories
+router.get('/categoryPageDetails', categoryPageDetails); // Make a route for categoryPageDetails
+router.post('/createRatingAndReview', auth, isStudent, createRatingAndReview); // Make a route for createRatingAndReview
+router.post('/updateRatingAndReview', auth, isStudent, updateRatingAndReview); // Make a route for updateRatingAndReview
+router.post('/deleteRatingAndReview', auth, isStudent, deleteRatingAndReview); // Make a route for deleteRatingAndReview
+router.get('/getAverageRating/', getAverageRating); // Make a route for getAverageRating
+router.get('/getAllRatingsAndReviews/', getAllRatingsAndReviews); // Make a route for getAllRatingsAndReviews
 
 module.exports = router; // Export the router so we can use it in the server.js file
