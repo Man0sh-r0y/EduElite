@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-
 // send OTP Logic:
 // 1. Fetch Email from req body
 // 2. Check if already user exists in DataBase
