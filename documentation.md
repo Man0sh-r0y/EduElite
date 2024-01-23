@@ -242,6 +242,23 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack).
       http://localhost:3000/api/v1/course/getAllRatingsAndReviews
       ```
 
+### Payment Routes
+
+1. **Capture Payment:**
+   - **Method:** POST
+   - **API Route:**
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Student (using middleware `isStudent`)
+     ```bash
+     http://localhost:3000/api/v1/payment/capturePayment
+     ```
+
+1. **Verify Signature:**
+   - **Method:** POST
+   - **API Route:**
+     ```bash
+     http://localhost:3000/api/v1/payment/verifySignature
+     ```
 
 ## Razorpay Integration in Backend 
 
