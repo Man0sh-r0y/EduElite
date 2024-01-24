@@ -118,7 +118,11 @@ exports.deleteAccount = async (req, res) => {
                     console.log(`User ${userDetails.firstName} ${userDetails,lastName} Deleted successfully`);
                 }
             } catch (error) {
-                
+                return res.status(500).json({
+                    success: false,
+                    message: "User cannot be deleted as Problem Occured while scheduling the deletion of user",
+                    error: error.message
+                });
             }
         });
 
