@@ -62,21 +62,43 @@
       http://localhost:4000/api/v1/auth/changePassword
      ```
 
+     ```json
+     {
+      "oldPassword": "123456",
+      "newPassword": "100000",
+      "
+     }
+     ```
+
 5. **Generate Forgot Password Token:**
    - **Method:** POST
    - **API Route:**
   
-     ```bash
+    ```bash
       http://localhost:4000/api/v1/auth/forgotPasswordToken
-     ```
+    ```
+
+    ```json
+    {
+      "email":"manashroy830@gmail.com"
+    }
+    ```
 
 6. **Reset Forgot Password:**
    - **Method:** POST
    - **API Route:**
   
-     ```bash
+    ```bash
       http://localhost:4000/api/v1/auth/resetForgotPassword
-     ```
+    ```
+
+    ```json
+    {
+      "password":"123456",
+      "confirmPassword":"123456",
+      "token":"token-code"
+    }
+    ```
 
 ### User's Profile Routes
 
