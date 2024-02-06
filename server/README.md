@@ -14,7 +14,7 @@
 
     ```json
     {
-      "email":"fimowi9945@glumark.com"
+      "email":"manashroy830@gmail.com"
     }
     ```
 
@@ -32,7 +32,7 @@
       "lastName":"Roy",
       "password":"123456",
       "confirmPassword":"123456",
-      "email":"testmail@gmail.com",
+      "email":"manashroy830@gmail.com",
       "accountType":"Student",
       "otp":"yiSxph"
     }
