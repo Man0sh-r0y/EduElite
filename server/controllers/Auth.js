@@ -38,14 +38,15 @@ exports.sendOTP = async (req, res) => {
 
         // create an entry in OTP collection
         await OTP.create({
-            email,
-            otp
+            email: email,
+            otp: otp
         });
 
         // return success message
         return res.status(200).json({
             success: true,
-            message: "OTP sent successfully"
+            message: "OTP sent successfully",
+            otp: otp
         });
 
     } catch (error) {
@@ -99,6 +100,8 @@ exports.signUp = async (req, res) => {
 
         // Find most recent OTP for the corresponding email
         const recentOTP = await OTP.findOne({ email }).sort({ createdAt: -1 }).limit(1);
+
+        console.log(`OTP sent in request for the user ${email} is: ${otp} and recent otp in database is: ${recentOTP?.otp}`);
 
         // Check if the OTP is valid or not (incorrect otp or expired otp)
         if(!recentOTP || recentOTP.otp !== otp) {

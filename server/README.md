@@ -8,9 +8,15 @@
    - **Method**: POST
    - **API Route:**
   
-     ```bash
+    ```bash
       http://localhost:4000/api/v1/auth/sendotp
-     ```
+    ```
+
+    ```json
+    {
+      "email":"fimowi9945@glumark.com"
+    }
+    ```
 
 2. **Sign Up:**
    - **Method:** POST
@@ -19,6 +25,18 @@
      ```bash
       http://localhost:4000/api/v1/auth/signup
      ```
+
+    ```json
+    {
+      "firstName":"Manash",
+      "lastName":"Roy",
+      "password":"123456",
+      "confirmPassword":"123456",
+      "email":"testmail@gmail.com",
+      "accountType":"Student",
+      "otp":"yiSxph"
+    }
+    ```
 
 3. **Login:**
    - **Method:** POST

@@ -9,7 +9,7 @@ const OTPSchema = new mongoose.Schema({
         trim: true, // removes whitespace from both ends of a string
     },
     otp: {
-        type: Number, // defining the data type
+        type: String, // defining the data type
         required: true, // defining the constraint
     },
     createdAt: {
