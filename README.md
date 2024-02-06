@@ -4,13 +4,13 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
 
 ## Test Users
 
-**Test Email id (for Student Profile)**:
+Test Email id (for Student Profile):
 
-**Test Email Password (for Student Profile)**:
+Test Email Password (for Student Profile):
 
-**Test Email id (for Instructor Profile)**:
+Test Email id (for Instructor Profile):
 
-**Test Email Password (for Instructor Profile)**:
+Test Email Password (for Instructor Profile):
 
 ## Know about Backend APIs
 
