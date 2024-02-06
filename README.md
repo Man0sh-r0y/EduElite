@@ -12,6 +12,10 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
 
 **Test Email Password (for Instructor Profile)**:
 
+## Know about Backend APIs
+
+[Click Here for more information](./server/README.md)
+
 ## Razorpay Integration in Backend
 
 > RazorPay Docs: [Click Here](https://razorpay.com/docs/)
