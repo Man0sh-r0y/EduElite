@@ -42,8 +42,15 @@
    - **Method:** POST
    - **API Route:**
   
-     ```bash
+    ```bash
       http://localhost:4000/api/v1/auth/login
+    ```
+
+    ```json
+    {
+      "email":"manashroy830@gmail.com",
+      "password":"123456"
+    }
      ```
 
 4. **Change Password:**

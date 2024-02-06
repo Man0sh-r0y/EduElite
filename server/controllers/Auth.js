@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const OTP = require('../models/OTP');
+const Profile = require('../models/Profile');
 const mailSender = require('../utils/mailSender');
 const otpGenerator = require('otp-generator');
 const bcrypt = require('bcrypt');
@@ -115,7 +116,7 @@ exports.signUp = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // User's Other Profile details
-        const profileDetails = await Profiler.create({
+        const profileDetails = await Profile.create({
             gender: null,
             dateOfBirth: null,
             about: null,
