@@ -21,7 +21,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-      http://localhost:3000/api/v1/auth/sendotp
+      http://localhost:4000/api/v1/auth/sendotp
      ```
 
 2. **Sign Up:**
@@ -29,7 +29,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
 
      ```bash
-      http://localhost:3000/api/v1/auth/signup
+      http://localhost:4000/api/v1/auth/signup
      ```
 
 3. **Login:**
@@ -37,7 +37,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-      http://localhost:3000/api/v1/auth/login
+      http://localhost:4000/api/v1/auth/login
      ```
 
 4. **Change Password:**
@@ -46,7 +46,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-      http://localhost:3000/api/v1/auth/changePassword
+      http://localhost:4000/api/v1/auth/changePassword
      ```
 
 5. **Generate Forgot Password Token:**
@@ -54,7 +54,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-      http://localhost:3000/api/v1/auth/forgotPasswordToken
+      http://localhost:4000/api/v1/auth/forgotPasswordToken
      ```
 
 6. **Reset Forgot Password:**
@@ -62,7 +62,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-      http://localhost:3000/api/v1/auth/resetForgotPassword
+      http://localhost:4000/api/v1/auth/resetForgotPassword
      ```
 
 ### User's Profile Routes
@@ -73,7 +73,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/profile/updateProfile
+     http://localhost:4000/api/v1/profile/updateProfile
      ```
 
 2. **Delete Account:**
@@ -82,7 +82,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/profile/deleteAccount
+     http://localhost:4000/api/v1/profile/deleteAccount
      ```
 
 3. **Cancel Delete Account:**
@@ -91,7 +91,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/profile/cancelDeleteAccount
+     http://localhost:4000/api/v1/profile/cancelDeleteAccount
      ```
 
 4. **Get All Details Of User:**
@@ -100,7 +100,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/profile/getAllDetailsOfUser
+     http://localhost:4000/api/v1/profile/getAllDetailsOfUser
      ```
 
 5. **Update Display Picture:**
@@ -109,7 +109,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/profile/updateDisplayPicture
+     http://localhost:4000/api/v1/profile/updateDisplayPicture
      ```
 
 6. **Get Enrolled Courses:**
@@ -118,7 +118,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/profile/getEnrolledCourses
+     http://localhost:4000/api/v1/profile/getEnrolledCourses
      ```
 
 ### Course Routes
@@ -130,7 +130,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/createCourse
+     http://localhost:4000/api/v1/course/createCourse
      ```
 
 2. **Show All Courses:**
@@ -138,7 +138,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/showAllCourses
+     http://localhost:4000/api/v1/course/showAllCourses
      ```
 
 3. **Get Course Details:**
@@ -146,7 +146,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/getCourseDetails
+     http://localhost:4000/api/v1/course/getCourseDetails
      ```
 
 4. **Create Section:**
@@ -156,7 +156,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/createSection
+     http://localhost:4000/api/v1/course/createSection
      ```
 
 5. **Update Section:**
@@ -166,7 +166,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/updateSection
+     http://localhost:4000/api/v1/course/updateSection
      ```
 
 6. **Delete Section:**
@@ -176,7 +176,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/deleteSection
+     http://localhost:4000/api/v1/course/deleteSection
      ```
 
 7. **Create Sub-Section:**
@@ -186,7 +186,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/createSubSection
+     http://localhost:4000/api/v1/course/createSubSection
      ```
 
 8. **Update Sub-Section:**
@@ -196,7 +196,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/updateSubSection
+     http://localhost:4000/api/v1/course/updateSubSection
      ```
 
 9. **Delete Sub-Section:**
@@ -206,7 +206,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/course/deleteSubSection
+     http://localhost:4000/api/v1/course/deleteSubSection
      ```
 
 10. **Create Category:**
@@ -216,7 +216,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/createCategory
+      http://localhost:4000/api/v1/course/createCategory
       ```
 
 11. **Show All Categories:**
@@ -224,7 +224,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/showAllCategories
+      http://localhost:4000/api/v1/course/showAllCategories
       ```
 
 12. **Category Page Details:**
@@ -232,7 +232,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/categoryPageDetails
+      http://localhost:4000/api/v1/course/categoryPageDetails
       ```
 
 13. **Create Rating And Review:**
@@ -242,7 +242,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/createRatingAndReview
+      http://localhost:4000/api/v1/course/createRatingAndReview
       ```
 
 14. **Update Rating And Review:**
@@ -252,7 +252,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/updateRatingAndReview
+      http://localhost:4000/api/v1/course/updateRatingAndReview
       ```
 
 15. **Delete Rating And Review:**
@@ -262,7 +262,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/deleteRatingAndReview
+      http://localhost:4000/api/v1/course/deleteRatingAndReview
       ```
 
 16. **Get Average Rating:**
@@ -270,7 +270,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/getAverageRating
+      http://localhost:4000/api/v1/course/getAverageRating
       ```
 
 17. **Get All Ratings And Reviews:**
@@ -278,7 +278,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
     - **API Route:**
   
       ```bash
-      http://localhost:3000/api/v1/course/getAllRatingsAndReviews
+      http://localhost:4000/api/v1/course/getAllRatingsAndReviews
       ```
 
 ### Payment Routes
@@ -290,7 +290,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/payment/capturePayment
+     http://localhost:4000/api/v1/payment/capturePayment
      ```
 
 2. **Verify Signature:**
@@ -298,7 +298,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/payment/verifySignature
+     http://localhost:4000/api/v1/payment/verifySignature
      ```
 
 ### Contact Us Route
@@ -308,7 +308,7 @@ This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
    - **API Route:**
   
      ```bash
-     http://localhost:3000/api/v1/contactUs
+     http://localhost:4000/api/v1/contactUs
      ```
 
 ## Razorpay Integration in Backend
