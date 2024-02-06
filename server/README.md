@@ -66,7 +66,7 @@
      {
       "oldPassword": "123456",
       "newPassword": "100000",
-      "
+      "confirmPassword": "100000"
      }
      ```
 
