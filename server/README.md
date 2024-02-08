@@ -13,9 +13,7 @@
      ```
 
      ```json
-     {
-       "email":"manashroy830@gmail.com"
-     }
+     { "email":"manashroy830@gmail.com" }
      ```
 
      ```json
