@@ -8,35 +8,35 @@
    - **Method**: POST
    - **API Route:**
   
-    ```bash
-      http://localhost:4000/api/v1/auth/sendotp
-    ```
+     ```bash
+       http://localhost:4000/api/v1/auth/sendotp
+     ```
 
-    ```json
-    {
-      "email":"manashroy830@gmail.com"
-    }
-    ```
+     ```json
+     {
+       "email":"manashroy830@gmail.com"
+     }
+     ```
 
 2. **Sign Up:**
    - **Method:** POST
    - **API Route:**
 
-    ```bash
+     ```bash
       http://localhost:4000/api/v1/auth/signup
-    ```
+     ```
 
-    ```json
-    {
-      "firstName":"Manash",
-      "lastName":"Roy",
-      "password":"123456",
-      "confirmPassword":"123456",
-      "email":"manashroy830@gmail.com",
-      "accountType":"Student",
-      "otp":"yiSxph"
-    }
-    ```
+     ```json
+     {
+        "firstName":"Manash",
+        "lastName":"Roy",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
+     ```
 
 3. **Login:**
    - **Method:** POST
@@ -74,31 +74,31 @@
    - **Method:** POST
    - **API Route:**
   
-    ```bash
-      http://localhost:4000/api/v1/auth/forgotPasswordToken
-    ```
+     ```bash
+       http://localhost:4000/api/v1/auth/forgotPasswordToken
+     ```
 
-    ```json
-    {
-      "email":"manashroy830@gmail.com"
-    }
-    ```
+     ```json
+     {
+       "email":"manashroy830@gmail.com"
+     }
+     ```
 
 6. **Reset Forgot Password:**
    - **Method:** POST
    - **API Route:**
   
-    ```bash
-      http://localhost:4000/api/v1/auth/resetForgotPassword
-    ```
+     ```bash
+       http://localhost:4000/api/v1/auth/resetForgotPassword
+     ```
 
-    ```json
-    {
-      "password":"123456",
-      "confirmPassword":"123456",
-      "token":"token-code"
-    }
-    ```
+     ```json
+     {
+        "password":"123456",
+        "confirmPassword":"123456",
+        "token":"token-code"
+     }
+     ```
 
 ### User's Profile Routes
 
