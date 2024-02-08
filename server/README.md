@@ -177,6 +177,10 @@
      http://localhost:4000/api/v1/profile/updateDisplayPicture
      ```
 
+     ```json
+     displayPicture: 'choose file from local machine'
+     ```
+
 6. **Get Enrolled Courses:**
    - **Method:** GET
    - **Authentication Required:** Yes (using middleware `auth`)
