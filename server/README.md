@@ -18,6 +18,18 @@
      }
      ```
 
+     ```json
+     {
+       "email":"manashroy454@gmail.com"
+     }
+     ```
+
+     ```json
+     {
+       "email":"manash.roy.fiem.cse21@teamfuture.in"
+     }
+     ```
+
 2. **Sign Up:**
    - **Method:** POST
    - **API Route:**
@@ -35,6 +47,18 @@
         "email":"manashroy830@gmail.com",
         "accountType":"Student",
         "otp":"yiSxph"
+     }
+     ```
+
+     ```json
+     {
+      "firstName":"Manash",
+      "lastName":"Roy",
+      "password":"123456",
+      "confirmPassword":"123456",
+      "email":"manashroy454@gmail.com",
+      "accountType":"Admin",
+      "otp":"eVpJ3q"
      }
      ```
 
