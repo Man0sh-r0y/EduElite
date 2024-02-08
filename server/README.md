@@ -177,7 +177,7 @@
      http://localhost:4000/api/v1/profile/updateDisplayPicture
      ```
 
-     ```json
+     ```bash
      displayPicture: 'choose file from local machine'
      ```
 
