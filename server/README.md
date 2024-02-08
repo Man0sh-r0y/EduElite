@@ -178,7 +178,7 @@
      ```
 
      ```bash
-     displayPicture: 'choose file from local machine'
+     displayPicture: 'choose file from local machine' # form-data
      ```
 
 6. **Get Enrolled Courses:**
