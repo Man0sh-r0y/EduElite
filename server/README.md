@@ -13,15 +13,15 @@
      ```
 
      ```json
-     { "email":"manashroy830@gmail.com" }
+     { "email": "manashroy830@gmail.com" }
      ```
 
      ```json
-     { "email":"manashroy454@gmail.com" }
+     { "email": "manashroy454@gmail.com" }
      ```
 
      ```json
-     { "email":"manash.roy.fiem.cse21@teamfuture.in" }
+     { "email": "manash.roy.fiem.cse21@teamfuture.in" }
      ```
 
 2. **Sign Up:**
@@ -53,6 +53,18 @@
       "email":"manashroy454@gmail.com",
       "accountType":"Admin",
       "otp":"eVpJ3q"
+     }
+     ```
+
+     ```json
+     {
+      "firstName":"Manash",
+      "lastName":"Roy",
+      "password":"123456",
+      "confirmPassword":"123456",
+      "email":"manash.roy.fiem.cse21@teamfuture.in",
+      "accountType":"Instructor",
+      "otp":"JPYRxD"
      }
      ```
 
