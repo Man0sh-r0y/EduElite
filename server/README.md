@@ -17,15 +17,11 @@
      ```
 
      ```json
-     {
-       "email":"manashroy454@gmail.com"
-     }
+     { "email":"manashroy454@gmail.com" }
      ```
 
      ```json
-     {
-       "email":"manash.roy.fiem.cse21@teamfuture.in"
-     }
+     { "email":"manash.roy.fiem.cse21@teamfuture.in" }
      ```
 
 2. **Sign Up:**
