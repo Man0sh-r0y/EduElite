@@ -141,6 +141,15 @@
      http://localhost:4000/api/v1/profile/updateProfile
      ```
 
+     ```json
+     {
+      "about": "Hello, I am a DEV. I have 3 years of experience in Backend Developement and specialize in Authentication and Authorization. I am passionate about Cloud and have worked on Studynotion. Please feel free to contact me for any inquiries or collaborations!",
+      "contactNumber": 125648959,
+      "dateOfBirth": "31.01.2002",
+      "gender": "MALE"
+      }
+     ```
+
 2. **Delete Account:**
    - **Method:** DELETE
    - **Authentication Required:** Yes (using middleware `auth`)
