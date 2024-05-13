@@ -238,24 +238,24 @@
 
 1. **Create Category:**
 
-    - **Method:** POST
-    - **Authentication Required:** Yes (using middleware `auth`)
-    - **Role Required:** Admin (using middleware `isAdmin`)
-    - **API Route:**
+   - **Method:** POST
+   - **Authentication Required:** Yes (using middleware `auth`)
+   - **Role Required:** Admin (using middleware `isAdmin`)
+   - **API Route:**
 
-      ```bash
-      http://localhost:4000/api/v1/course/createCategory
-      ```
+     ```bash
+     http://localhost:4000/api/v1/course/createCategory
+     ```
 
-      #### Test Data
+     #### Test Data
 
 
-      ```json
-      {
-          "name": "ML",
-          "description": "ML is trending Now"
-      }
-      ```
+     ```json
+     {
+         "name": "ML",
+         "description": "ML is trending Now"
+     }
+     ```
 2. **Create Course:**
 
    - **Method:** POST
@@ -351,6 +351,16 @@
      ```bash
      http://localhost:4000/api/v1/course/createSubSection
      ```
+
+     #### Test Data (Upload it as `form-data`)
+
+
+     ```bash
+     videoFile: upload the video file
+     sectionId: Write the section id here
+     title: "ML Lecture 1"
+     description: "What is Machine Learning?"
+     ```
 9. **Update Sub-Section:**
 
    - **Method:** POST
@@ -363,14 +373,15 @@
      ```
 10. **Delete Sub-Section:**
 
-   - **Method:** POST
-   - **Authentication Required:** Yes (using middleware `auth`)
-   - **Role Required:** Instructor (using middleware `isInstructor`)
-   - **API Route:**
+- **Method:** POST
+- **Authentication Required:** Yes (using middleware `auth`)
+- **Role Required:** Instructor (using middleware `isInstructor`)
+- **API Route:**
 
-     ```bash
-     http://localhost:4000/api/v1/course/deleteSubSection
-     ```
+  ```bash
+  http://localhost:4000/api/v1/course/deleteSubSection
+  ```
+
 11. **Show All Categories:**
 
     - **Method:** GET

@@ -42,12 +42,14 @@ exports.createSubSection = async (req, res) => {
         });
 
         // Update the Course Content Section with this Course Content Sub Section ObjectId
-        const courseContentSection = await CourseContentSection.findById(sectionId);
-        courseContentSection.subSection.push(subSectionDetails._id);
-        await courseContentSection.save();
+        // const courseContentSection = await CourseContentSection.findById(sectionId);
+        // courseContentSection.subSection.push(subSectionDetails._id);
+        // await courseContentSection.save();
+        // Update the corresponding section with the newly created sub-section
+        const courseContentSection = await CourseContentSection.findByIdAndUpdate({ _id: sectionId }, { $push: { subSection: subSectionDetails._id } }, { new: true }).populate("subSection")
 
-        // populate the courseContentSection 
-        await courseContentSection.populate('subSection').execPopulate();
+        // // populate the courseContentSection 
+        // await courseContentSection.populate('subSection').execPopulate();
 
         return res.status(200).json({
             succcess: true,
