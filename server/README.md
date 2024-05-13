@@ -167,24 +167,23 @@
 
    - **Method:** PUT
    - **Authentication Required:** Yes (using middleware `auth`)
+   - API Route:
 
-     - **API Route:**
+     ```bash
+     http://localhost:4000/api/v1/profile/updateProfile
+     ```
 
-       ```bash
-       http://localhost:4000/api/v1/profile/updateProfile
-       ```
-
-       #### **Test Data**
+     #### Test Data
 
 
-       ```json
-       {
-        	"about": "Hello, I am a DEV. I have 3 years of experience in Backend Developement and specialize in Authentication and Authorization. I am passionate about Cloud and have worked on Studynotion. Please feel free to contact me for any inquiries or collaborations!",
-        	"contactNumber": 125648959,
-       	"dateOfBirth": "2002-01-31",
-        	"gender": "MALE"
-        }
-       ```
+     ```json
+     {
+      	"about": "Hello, I am a DEV. I have 3 years of experience in Backend Developement and specialize in Authentication and Authorization. I am passionate about Cloud and have worked on Studynotion. Please feel free to contact me for any inquiries or collaborations!",
+      	"contactNumber": 125648959,
+     	"dateOfBirth": "2002-01-31",
+      	"gender": "MALE"
+      }
+     ```
 2. **Delete Account:**
 
    - **Method:** DELETE
