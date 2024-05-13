@@ -236,7 +236,27 @@
 
 ### Course Routes
 
-1. **Create Course:**
+1. **Create Category:**
+
+    - **Method:** POST
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Admin (using middleware `isAdmin`)
+    - **API Route:**
+
+      ```bash
+      http://localhost:4000/api/v1/course/createCategory
+      ```
+
+      #### Test Data
+
+
+      ```json
+      {
+          "name": "ML",
+          "description": "ML is trending Now"
+      }
+      ```
+2. **Create Course:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -258,7 +278,7 @@
      tag: "Development", 
      category: Write the Object ID of the Category
      ```
-2. **Show All Courses:**
+3. **Show All Courses:**
 
    - **Method:** GET
    - **API Route:**
@@ -266,7 +286,7 @@
      ```bash
      http://localhost:4000/api/v1/course/showAllCourses
      ```
-3. **Get Course Details:**
+4. **Get Course Details:**
 
    - **Method:** GET
    - **API Route:**
@@ -274,7 +294,7 @@
      ```bash
      http://localhost:4000/api/v1/course/getCourseDetails
      ```
-4. **Create Section:**
+5. **Create Section:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -301,7 +321,7 @@
          "courseId": Write the same Object Id of the Course
      }
      ```
-5. **Update Section:**
+6. **Update Section:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -311,7 +331,7 @@
      ```bash
      http://localhost:4000/api/v1/course/updateSection
      ```
-6. **Delete Section:**
+7. **Delete Section:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -321,7 +341,7 @@
      ```bash
      http://localhost:4000/api/v1/course/deleteSection
      ```
-7. **Create Sub-Section:**
+8. **Create Sub-Section:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -331,7 +351,7 @@
      ```bash
      http://localhost:4000/api/v1/course/createSubSection
      ```
-8. **Update Sub-Section:**
+9. **Update Sub-Section:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -341,7 +361,7 @@
      ```bash
      http://localhost:4000/api/v1/course/updateSubSection
      ```
-9. **Delete Sub-Section:**
+10. **Delete Sub-Section:**
 
    - **Method:** POST
    - **Authentication Required:** Yes (using middleware `auth`)
@@ -351,26 +371,6 @@
      ```bash
      http://localhost:4000/api/v1/course/deleteSubSection
      ```
-10. **Create Category:**
-
-    - **Method:** POST
-    - **Authentication Required:** Yes (using middleware `auth`)
-    - **Role Required:** Admin (using middleware `isAdmin`)
-    - **API Route:**
-
-      ```bash
-      http://localhost:4000/api/v1/course/createCategory
-      ```
-
-      #### Test Data
-
-
-      ```json
-      {
-          "name": "ML",
-          "description": "ML is trending Now"
-      }
-      ```
 11. **Show All Categories:**
 
     - **Method:** GET
