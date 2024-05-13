@@ -45,6 +45,8 @@
       http://localhost:4000/api/v1/auth/signup
      ```
 
+     **Test Data**
+
      ```json
      {
         "firstName":"Rahul",
