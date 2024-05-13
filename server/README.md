@@ -47,8 +47,8 @@
 
      ```json
      {
-        "firstName":"Manash",
-        "lastName":"Roy",
+        "firstName":"Rahul",
+        "lastName":"Singh",
         "password":"123456",
         "confirmPassword":"123456",
         "email":"manashroy830@gmail.com",
@@ -71,8 +71,8 @@
 
      ```json
      {
-      "firstName":"Manash",
-      "lastName":"Roy",
+      "firstName":"Raj",
+      "lastName":"Kumar",
       "password":"123456",
       "confirmPassword":"123456",
       "email":"manash.roy.fiem.cse21@teamfuture.in",
