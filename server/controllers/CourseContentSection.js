@@ -64,7 +64,7 @@ exports.updateSection = async (req, res) => {
         }
 
         // Update the section name
-        const sectionDetails = await findById(sectionId);
+        const sectionDetails = await CourseContentSection.findById(sectionId);
         const oldSectionName = sectionDetails.sectionName;
         sectionDetails.sectionName = sectionName;
         await sectionDetails.save(); // save the updated section name to the database
@@ -78,7 +78,7 @@ exports.updateSection = async (req, res) => {
     catch (error) {
         return res.status(500).json({
             success: false,
-            message: `Unable to update the Course Content Section name to the new name ${sectionName}, please try again`,
+            message: `Unable to update the Course Content Section name to the new name, please try again`,
             error: error.message,
         });
     }

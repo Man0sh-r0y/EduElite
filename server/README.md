@@ -345,6 +345,16 @@
      ```bash
      http://localhost:4000/api/v1/course/updateSection
      ```
+
+     #### Test Data
+
+
+     ```json
+     {
+         "sectionName": "Machine Learning Basics I",
+         "sectionId": Write the Object Id of the Section
+     }
+     ```
 7. **Delete Section:**
 
    - **Method:** POST
@@ -384,6 +394,16 @@
 
      ```bash
      http://localhost:4000/api/v1/course/updateSubSection
+     ```
+
+     #### Test Data
+
+
+     ```json
+     {
+         "subSectionId": "66424091cd2c1a07e1100706",
+         "title": "Machine Learning Lecture 1"
+     }
      ```
 10. **Delete Sub-Section:**
 

@@ -115,7 +115,7 @@ exports.updateSubSection = async (req, res) => {
         return res.status(200).json({
             succcess: true,
             message: `Sub Section "${title}" updated successfully`,
-            subSectionDetails: subSectionDetails
+            subSectionDetails: courseContentSubSection
         });
     }
     catch (error) {
