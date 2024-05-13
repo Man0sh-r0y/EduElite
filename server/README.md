@@ -29,19 +29,6 @@
 
 
      ```json
-     {
-        "firstName":"Rahul",
-        "lastName":"Singh",
-        "password":"123456",
-        "confirmPassword":"123456",
-        "email":"manashroy830@gmail.com",
-        "accountType":"Student",
-        "otp":"yiSxph"
-     }
-     ```
-
-
-     ```json
      { "email": "manashroy830@gmail.com" }
      ```
 
@@ -112,18 +99,6 @@
 
 
      ```json
-     {
-        "firstName":"Rahul",
-        "lastName":"Singh",
-        "password":"123456",
-        "confirmPassword":"123456",
-        "email":"manashroy830@gmail.com",
-        "accountType":"Student",
-        "otp":"yiSxph"
-     }
-     ```
-
-     ```json
       {
         "email":"manashroy830@gmail.com",
         "password":"123456"
@@ -141,18 +116,6 @@
 
      #### **Test Data**
 
-
-     ```json
-     {
-        "firstName":"Rahul",
-        "lastName":"Singh",
-        "password":"123456",
-        "confirmPassword":"123456",
-        "email":"manashroy830@gmail.com",
-        "accountType":"Student",
-        "otp":"yiSxph"
-     }
-     ```
 
      ```json
      {
@@ -175,18 +138,6 @@
 
      ```json
      {
-        "firstName":"Rahul",
-        "lastName":"Singh",
-        "password":"123456",
-        "confirmPassword":"123456",
-        "email":"manashroy830@gmail.com",
-        "accountType":"Student",
-        "otp":"yiSxph"
-     }
-     ```
-
-     ```json
-     {
        "email":"manashroy830@gmail.com"
      }
      ```
@@ -201,18 +152,6 @@
 
      #### **Test Data**
 
-
-     ```json
-     {
-        "firstName":"Rahul",
-        "lastName":"Singh",
-        "password":"123456",
-        "confirmPassword":"123456",
-        "email":"manashroy830@gmail.com",
-        "accountType":"Student",
-        "otp":"yiSxph"
-     }
-     ```
 
      ```json
      {
@@ -235,19 +174,6 @@
      ```
 
      #### **Test Data**
-
-
-     ```json
-     {
-        "firstName":"Rahul",
-        "lastName":"Singh",
-        "password":"123456",
-        "confirmPassword":"123456",
-        "email":"manashroy830@gmail.com",
-        "accountType":"Student",
-        "otp":"yiSxph"
-     }
-     ```
 
 
      ```json
