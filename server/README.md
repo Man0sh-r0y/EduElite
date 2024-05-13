@@ -249,7 +249,7 @@
 
      **Test Data (Upload it as `form-data`)**
 
-     ```json
+     ```bash
      thumbnail: upload the thumbnail file
      courseName: "MERN Stack Development",
      courseDescription: "MERN stack development is a process that uses JavaScript to build web applications that are scalable and robust",
