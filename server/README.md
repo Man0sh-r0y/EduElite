@@ -284,6 +284,23 @@
      ```bash
      http://localhost:4000/api/v1/course/createSection
      ```
+
+     #### **Test Data**
+
+
+     ```json
+     {
+         "sectionName": "ML Basics - I",
+         "courseId": Write the Object Id of the Course
+     }
+     ```
+
+     ```json
+     {
+         "sectionName": "ML Basics - II",
+         "courseId": Write the same Object Id of the Course
+     }
+     ```
 5. **Update Section:**
 
    - **Method:** POST

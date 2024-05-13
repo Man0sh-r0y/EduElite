@@ -26,24 +26,23 @@ exports.createSection = async (req, res) => {
         const newSection = await CourseContentSection.create({ sectionName });
 
         // Push the newly created section to the courseContent array in Course model
-        const courseDetails = await Course.findById(courseId);
-        courseDetails.courseContent.push(newSection._id);
-        await courseDetails.save();
-
-        // populate the courseContentSection and courseContentSubSection from the Course model
-        await courseDetails.populate('courseContentSection').execPopulate();
-        await courseDetails.CourseContentSection.populate('courseContentSubSection').execPopulate();
+        const updatedCourse = await Course.findByIdAndUpdate(courseId, { $push: { courseContent: newSection._id }}, { new: true }).populate({
+				path: "courseContent",
+				populate: {
+					path: "subSection",
+				},
+			}).exec();
         
         return res.status(200).json({
             success: true,
             message: `Section ${sectionName} created successfully`,
-            courseDetails: courseDetails
+            courseDetails: updatedCourse
         })
     }
     catch (error) {
         return res.status(500).json({
             success: false,
-            message: `Unable to create Section ${sectionName}, please try again`,
+            message: `Unable to create Section, please try again`,
             error: error.message
         });
     }
