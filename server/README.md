@@ -288,14 +288,14 @@
      #### **Test Data**
 
 
-     ```json
+     ```bash
      {
          "sectionName": "ML Basics - I",
          "courseId": Write the Object Id of the Course
      }
      ```
 
-     ```json
+     ```bash
      {
          "sectionName": "ML Basics - II",
          "courseId": Write the same Object Id of the Course
