@@ -246,6 +246,18 @@
      ```bash
      http://localhost:4000/api/v1/course/createCourse
      ```
+
+     **Test Data (Upload it as `form-data`)**
+
+     ```json
+     thumbnail: upload the thumbnail file
+     courseName: "MERN Stack Development",
+     courseDescription: "MERN stack development is a process that uses JavaScript to build web applications that are scalable and robust",
+     whatYouWillLearn: "HTML CSS JS React JS Node JS EXpress MongoDB", 
+     price: 4000, 
+     tag: "Development", 
+     category: Write the Object ID of the Category
+     ```
 2. **Show All Courses:**
 
    - **Method:** GET
