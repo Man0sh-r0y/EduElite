@@ -37,9 +37,7 @@ Test Email Password (for Instructor Profile):
 **Payment Stages**:
 
 1. `Payment Stage 1`: Order State is created and payment state is also created. (Cutomer clicks on Buy Now button and submits the payment information which is sent to Razorpay But the payment isn't processed at this stage)
-
 2. `Payment Stage 2`: Order State is attempted and Payment state is authorized/faild (An order movesfrom created to attempted state when payment is first attempted. It remains in this state until apayment associated with the order is captured.)
-
 3. `Payment Stage 3`: Order State is paid and Payment state is captured (After the payment moves to the captured state, the order moves to the paid state. No more payment requests are allowed after an order moves to the paid state. The order continues to be in this state even if the payment for this order is refunded.)
 
 > Order is an important step in the payment process.
@@ -54,7 +52,6 @@ Test Email Password (for Instructor Profile):
    ```bash
     npm install razorpay
    ```
-
 2. **Instantiate Razorpay**:
    Add this code in the `config` directory of your backend code structure. This code snippet is importing the razorpay module in a Node.js application and then creating an instance of the Razorpay class. This instance is configured with the key_id and key_secret obtained from environment variables.
 
@@ -69,7 +66,6 @@ Test Email Password (for Instructor Profile):
 
     module.exports = instance; 
    ```
-
 3. **Create an Order in Server**:
 4. **Add Checkout Options**:
 5. **Store Fields in Server**:
