@@ -180,7 +180,7 @@
      {
       "about": "Hello, I am a DEV. I have 3 years of experience in Backend Developement and specialize in Authentication and Authorization. I am passionate about Cloud and have worked on Studynotion. Please feel free to contact me for any inquiries or collaborations!",
       "contactNumber": 125648959,
-      "dateOfBirth": "31.01.2002",
+      "dateOfBirth": "2002-01-31",
       "gender": "MALE"
       }
      ```
