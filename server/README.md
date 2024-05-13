@@ -349,7 +349,7 @@
      #### Test Data
 
 
-     ```json
+     ```bash
      {
          "sectionName": "Machine Learning Basics I",
          "sectionId": Write the Object Id of the Section
@@ -407,14 +407,13 @@
      ```
 10. **Delete Sub-Section:**
 
-- **Method:** POST
-- **Authentication Required:** Yes (using middleware `auth`)
-- **Role Required:** Instructor (using middleware `isInstructor`)
-- **API Route:**
-
-  ```bash
-  http://localhost:4000/api/v1/course/deleteSubSection
-  ```
+    - **Method:** POST
+    - **Authentication Required:** Yes (using middleware `auth`)
+    - **Role Required:** Instructor (using middleware `isInstructor`)
+    - **API Route:**
+      ```bash
+      http://localhost:4000/api/v1/course/deleteSubSection
+      ```
 
 11. **Show All Categories:**
 
