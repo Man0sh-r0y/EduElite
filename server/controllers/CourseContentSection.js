@@ -95,7 +95,7 @@ exports.deleteSection = async (req, res) => {
 
     try {
         // Fetch data from request body
-        const { sectionId, courseId } = req.params
+        const { sectionId, courseId } = req.body;
 
         const courseContentSection = await CourseContentSection.findById(sectionId);
 
@@ -103,6 +103,13 @@ exports.deleteSection = async (req, res) => {
             return res.status(404).json({
                 success: false,
                 message: "Course Content Section not found"
+            })
+        }
+
+        if(courseContentSection.subSection.length > 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Course Content Section has sub sections. Please delete the sub sections first."
             })
         }
 

@@ -365,6 +365,16 @@
      ```bash
      http://localhost:4000/api/v1/course/deleteSection
      ```
+
+     #### Test Data
+
+
+     ```bash
+     {
+         "sectionId": Write the Object Id of the Section,
+         "courseId": Write the Object Id of the Course
+     }
+     ```
 8. **Create Sub-Section:**
 
    - **Method:** POST
@@ -411,10 +421,19 @@
     - **Authentication Required:** Yes (using middleware `auth`)
     - **Role Required:** Instructor (using middleware `isInstructor`)
     - **API Route:**
+
       ```bash
       http://localhost:4000/api/v1/course/deleteSubSection
       ```
 
+      Test Data
+
+      ```bash
+      {
+          "sectionId": Write the Object Id of that section,
+          "subSectionId": Write the Object Id of sub section
+      }
+      ```
 11. **Show All Categories:**
 
     - **Method:** GET
