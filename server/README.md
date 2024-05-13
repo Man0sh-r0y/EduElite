@@ -25,6 +25,22 @@
        http://localhost:4000/api/v1/auth/sendotp
      ```
 
+     #### **Test Data**
+
+
+     ```json
+     {
+        "firstName":"Rahul",
+        "lastName":"Singh",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
+     ```
+
+
      ```json
      { "email": "manashroy830@gmail.com" }
      ```
@@ -92,6 +108,21 @@
       http://localhost:4000/api/v1/auth/login
      ```
 
+     #### **Test Data**
+
+
+     ```json
+     {
+        "firstName":"Rahul",
+        "lastName":"Singh",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
+     ```
+
      ```json
       {
         "email":"manashroy830@gmail.com",
@@ -106,6 +137,21 @@
 
      ```bash
       http://localhost:4000/api/v1/auth/changePassword
+     ```
+
+     #### **Test Data**
+
+
+     ```json
+     {
+        "firstName":"Rahul",
+        "lastName":"Singh",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
      ```
 
      ```json
@@ -124,6 +170,21 @@
        http://localhost:4000/api/v1/auth/forgotPasswordToken
      ```
 
+     #### **Test Data**
+
+
+     ```json
+     {
+        "firstName":"Rahul",
+        "lastName":"Singh",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
+     ```
+
      ```json
      {
        "email":"manashroy830@gmail.com"
@@ -136,6 +197,21 @@
 
      ```bash
        http://localhost:4000/api/v1/auth/resetForgotPassword
+     ```
+
+     #### **Test Data**
+
+
+     ```json
+     {
+        "firstName":"Rahul",
+        "lastName":"Singh",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
      ```
 
      ```json
@@ -157,6 +233,22 @@
      ```bash
      http://localhost:4000/api/v1/profile/updateProfile
      ```
+
+     #### **Test Data**
+
+
+     ```json
+     {
+        "firstName":"Rahul",
+        "lastName":"Singh",
+        "password":"123456",
+        "confirmPassword":"123456",
+        "email":"manashroy830@gmail.com",
+        "accountType":"Student",
+        "otp":"yiSxph"
+     }
+     ```
+
 
      ```json
      {
