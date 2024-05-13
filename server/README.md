@@ -332,6 +332,16 @@
       ```bash
       http://localhost:4000/api/v1/course/createCategory
       ```
+
+      #### Test Data
+
+
+      ```
+      {
+          "name": "ML",
+          "description": "ML is trending Now"
+      }
+      ```
 11. **Show All Categories:**
 
     - **Method:** GET
