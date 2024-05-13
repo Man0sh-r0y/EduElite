@@ -53,7 +53,7 @@ exports.updateProfile = async (req, res) => {
         //return response
         return res.status(200).json({
             success: true,
-            message: `Profile of User ${userDetails.firstName} ${userDetails,lastName} has been Updated Successfully`,
+            message: `Profile of User ${userDetails.firstName} ${userDetails.lastName} has been Updated Successfully`,
             profileDetails: profileDetails
         });
 
@@ -96,13 +96,12 @@ exports.deleteAccount = async (req, res) => {
 
         // Schedule the deletion of User
         const deleteOnDate = new Date() + 5 * 24 * 60 * 60 * 1000; // delete after 5 days from now
-        const scheduleDelete = userDetails.scheduleDelete;
-        scheduleDelete = true;
+        userDetails.scheduleDelete = true;
         await userDetails.save();
 
         schedule.scheduleJob(deleteOnDate, async function () {
             try {
-                if (scheduleDelete) {
+                if (userDetails.scheduleDelete) {
                     // unenroll user from all the courses
                     const courses = userDetails.courses; // get the courses array from user details
                     for (let i = 0; i < courses.length; i++) {
@@ -115,7 +114,7 @@ exports.deleteAccount = async (req, res) => {
                     }
                     await Profile.findByIdAndDelete({ _id: userDetails.additionalDetails }); // delete the profile
                     await User.findByIdAndDelete({ _id: id }); // delete the user
-                    console.log(`User ${userDetails.firstName} ${userDetails,lastName} Deleted successfully`);
+                    console.log(`User ${userDetails.firstName} ${userDetails.lastName} Deleted successfully`);
                 }
             } catch (error) {
                 return res.status(500).json({
@@ -130,7 +129,7 @@ exports.deleteAccount = async (req, res) => {
         //return response
         return res.status(200).json({
             success: true,
-            message: `User account of ${userDetails.firstName} ${userDetails,lastName} will be deleted after 5 Days`,
+            message: `User account of ${userDetails.firstName} ${userDetails.lastName} will be deleted after 5 Days`,
             userDetails: userDetails
         });
     } catch (error) {
@@ -160,25 +159,24 @@ exports.cancelDeleteAccount = async (req, res) => {
             });
         }
 
-        // cancel the deletion of user
-        const scheduleDelete = userDetails.scheduleDelete;
-
-        if (!scheduleDelete) {
+        if (!userDetails.scheduleDelete) {
             return res.status(400).json({
                 success: false,
-                message: `User account of ${userDetails.firstName} ${userDetails,lastName} is not scheduled for deletion`
+                message: `User account of ${userDetails.firstName} ${userDetails.lastName} is not scheduled for deletion`
             });
         }
 
-        scheduleDelete = false;
+        // cancel the deletion of user
+        userDetails.scheduleDelete = false;
         await userDetails.save();
 
         //return response
         return res.status(200).json({
             success: true,
-            message: `User account of ${userDetails.firstName} ${userDetails,lastName} recovery initiated`,
+            message: `User account of ${userDetails.firstName} ${userDetails.lastName} recovery initiated`,
             userDetails: userDetails
         });
+        
     } catch (error) {
         return res.status(500).json({
             success: false,

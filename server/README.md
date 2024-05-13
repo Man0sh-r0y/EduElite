@@ -193,6 +193,16 @@
      ```bash
      http://localhost:4000/api/v1/profile/deleteAccount
      ```
+
+     #### Test Data
+
+
+     ```json
+     {
+         "email":"manashroy830@gmail.com",
+         "password":"123456"
+     }
+     ```
 3. **Cancel Delete Account:**
 
    - **Method:** PUT
@@ -220,6 +230,9 @@
      ```bash
      http://localhost:4000/api/v1/profile/updateDisplayPicture
      ```
+
+     #### Test Data (Upload it as `form-data`)
+
 
      ```bash
      displayPicture: 'choose file from local machine' # form-data
