@@ -2,9 +2,9 @@
 
 ## Tech Stack and Tools Used
 
-- **Runtime Enviroment:** Node Js
-- **Framework:** Express Js
-- **DataBase:** MongoDB
+- **Runtime Enviroment:** `Node Js`
+- **Framework:** `Express Js`
+- **DataBase:** `MongoDB`
 - **For Auth:** `jwt`
 - **For Sending Mail**: `NodeMailer`
 - **For Sending OTP**: `Otp-Generator`
