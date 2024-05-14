@@ -23,7 +23,7 @@ const OTPSchema = new mongoose.Schema({
 // function to send OTP to the user's email
 async function sendVerificationEmail(email, otp) {
     try{
-        const mailTitle = "Verification Email from StudyNotion";
+        const mailTitle = "Verification Email";
         const mailBody = `${otp} is your verification code. Don't share it.`;
         
         // Now sending the mail through mailSender utility
