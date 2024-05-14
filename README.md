@@ -1,6 +1,6 @@
 # EdTech Platform
 
-This is Full Stack the EdTech Platform built in modern Technology (MERN Stack)
+This is Full Stack EdTech Platform built in modern Technology (MERN Stack)
 
 ## Test Users
 
