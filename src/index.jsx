@@ -8,6 +8,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
-    </BrowserRouter>  // Wrap the App component in BrowserRouter to enable routing
+    </BrowserRouter>  {/* Wrap the App component in BrowserRouter to enable routing */}
   </React.StrictMode>,
 )
