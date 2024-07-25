@@ -1,10 +1,11 @@
-import frameImage from "../assets/frame.png"
+import frameImage from "../../../assets/Images/frame.png"
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import { FcGoogle } from "react-icons/fc"
 
 function Template(props) {
-    const { title, desc1, desc2, image, formtype, setIsLoggedIn } = props;
+
+    const { title, desc1, desc2, image, formtype } = props;
 
     return (
         <div className='flex justify-between w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0'>
@@ -27,19 +28,19 @@ function Template(props) {
 
                 {
                     formtype === "signup" ?
-                        (<SignupForm setIsLoggedIn={setIsLoggedIn} />) :
-                        (<LoginForm setIsLoggedIn={setIsLoggedIn} />)
+                        (<SignupForm />) :
+                        (<LoginForm />)
                 }
                 {/* if Form Type is sign up then show the sign up form otherwise show the login form */}
 
                 <div className='flex w-full items-center my-4 gap-x-2'>
                     {/* A Line made with div tag */}
-                    <div className='w-full h-[1px] bg-slate-400'></div>
+                    <div className='w-full h-[1px] bg-black'></div>
                     <p className='text-slate-200 font-medium leading[1.375rem]'>
                         OR
                     </p>
                     {/* A Line made with div tag */}
-                    <div className='w-full h-[1px] bg-slate-400'></div>
+                    <div className='w-full h-[1px] bg-black'></div>
                 </div>
 
                 <button className='w-full flex justify-center items-center rounded-[8px] font-medium text-slate-200 border border-slate-400 px-[12px] py-[8px] gap-x-2 mt-6 '>

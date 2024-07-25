@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from "react-hot-toast"
+import { useDispatch } from "react-redux"
+import { sendOtp } from "../../../services/operations/AuthAPI"
+import { setSignUpData } from "../../../slices/authSlice"
+import { ACCOUNT_TYPE } from "../../../utils/constants"
 
-function SignupForm(props) {
+function SignupForm() {
 
     const navigate = useNavigate(); // useNavigate hook
-
-    const { setIsLoggedIn } = props; // destructuring props object
+    const dispatch = useDispatch()
 
     const [formData, setFormData] = useState({
         firstName: "", // initially first name is empty
@@ -28,19 +31,37 @@ function SignupForm(props) {
     }
 
     function submitHandler(event) {
-        event.preventDefault(); // to prevent page refresh
+        event.preventDefault()
+
         if (formData.password !== formData.confirmPassword) {
-            toast.error("Passwords do not match"); // toast message
-            return;
+            toast.error("Passwords Do Not Match")
+            return
         }
-        setIsLoggedIn(true); // user is logged in
-        toast.success("Account Created", { position: toast.POSITION.TOP_CENTER, autoClose: 1000, theme: "colored" }); // toast message
-        navigate('/dashboard'); // user will be redirected to dashboard page
+        const signupData = {
+            ...formData,
+            accountType,
+        }
+
+        // Setting signup data to state
+        // To be used after otp verification
+        dispatch(setSignUpData(signupData))
+        // Send OTP to user for verification
+        dispatch(sendOtp(formData.email, navigate))
+
+        // Reset
+        setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+        })
+        setAccountType(ACCOUNT_TYPE.STUDENT)
     }
 
     return (
         <div>
-            <ToastContainer /> {/* Toast Container */}
+            
             {/* Student and Instructor tab */}
             <div className='flex bg-slate-800 p-1 gap-x-1 my-6 rounded-full max-w-max'>
                 <button className={`${accountType === "student" ? "bg-black text-white" : "bg-transparent text-white"} py-2 px-5 rounded-full transition-all duration-200`}

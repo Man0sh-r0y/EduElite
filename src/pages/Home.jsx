@@ -13,13 +13,13 @@ function Home() {
             {/* relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center justify-between */}
             <div className=''>
 
-                <Link to={"/signup"}>
+                {/* <Link to={"/signup"}>
                     <div className='group bg-richblack-5 mt-16 p-1 mx-auto rounded-full transition-all duration-200 hover:scale-95 w-fit'>
                         <div className='flex flex-row gap-2 items-center rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-richblack-25'>
                             <p>Teach on EduHub</p>
                         </div>
                     </div>
-                </Link>
+                </Link> */}
 
                 <div className='flex w-11/12 max-w-maxContent mx-auto justify-center items-center'>
                     <div className='w-[50%]'>

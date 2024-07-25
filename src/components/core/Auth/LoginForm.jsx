@@ -1,14 +1,11 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-hot-toast"
 
-function LoginForm(props) {
+function LoginForm() {
 
     const navigate = useNavigate(); // useNavigate hook
-
-    const { setIsLoggedIn } = props; // destructuring props object
-    // setIsLoggedIn is used to set the value of isLoggedIn
 
     const [formData, setFormData] = useState({
         email: "", // initially email is empty
@@ -29,22 +26,20 @@ function LoginForm(props) {
     }
 
     function submitHandler(event) {
-        event.preventDefault(); // to prevent page refresh
-        setIsLoggedIn(true); // user is logged in
-        toast.success("Logged in", { position: toast.POSITION.TOP_CENTER, autoClose: 1000, theme: "colored" }); // toast message
-        navigate('/dashboard'); // user will be redirected to dashboard page
+        event.preventDefault()
+        dispatch(login(email, password, navigate))
     }
 
     return (
         <form className="flex flex-col w-full gap-y-4 mt-6"
             onSubmit={submitHandler}>
-            <ToastContainer /> {/* Toast Container */}
+
             {/* Email Address */}
             <label className='w-full'>
                 {/* Email Address text */}
-                <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                     Email Address
-                    <sup className='text-rose-600'> * </sup>
+                    <sup className='text-pink-200'> * </sup>
                 </p>
                 {/* Email Address input */}
                 <input
@@ -53,7 +48,7 @@ function LoginForm(props) {
                     placeholder="Enter your email address"
                     onChange={changeHandler}
                     name="email"
-                    className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]'
+                    className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]'
                 />
 
             </label>
@@ -61,9 +56,9 @@ function LoginForm(props) {
             {/* Password */}
             <label className='w-full relative'>
                 {/* Password text */}
-                <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                     Password
-                    <sup className='text-rose-600'> * </sup>
+                    <sup className='text-pink-200'> * </sup>
                 </p>
                 {/* Password input */}
                 <input
@@ -72,7 +67,7 @@ function LoginForm(props) {
                     placeholder="Enter your password"
                     onChange={changeHandler}
                     name="password"
-                    className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]'
+                    className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]'
                 />
                 {/* If showPassword is true, then input type would be text,
                  That's mean whatever we are typing in the input field that would be shown
@@ -98,14 +93,14 @@ function LoginForm(props) {
 
                 {/* Forgot Password */}
                 <Link to="#"> {/* Currently user will not be redirected to any page that's why '#' */}
-                    <p className='text-xs mt-1 text-cyan-200 max-w-max ml-auto'>
+                    <p className='text-xs mt-1 text-black max-w-max ml-auto'>
                         Forgot Password?
                     </p>
                 </Link>
             </label>
 
             {/* Login Button */}
-            <button className='bg-amber-400 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
+            <button className='bg-yellow-50 rounded-[8px] font-medium  px-[12px] py-[8px] mt-6'>
                 Sign in
             </button>
 

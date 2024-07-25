@@ -1,7 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home" // import thr Home page
 import Navbar from "./components/common/Navbar";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Signup from "./pages/Signup"
+import Login from "./pages/Login"
+import Home from "./pages/Home" // import thr Home page
 import "./App.css";
 
 function App() {
@@ -11,6 +14,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
+        <Route path="/signup" element={<PrivateRoute> <Signup /> </PrivateRoute>}/>
+        <Route path="/login" element={<PrivateRoute> <Login /></PrivateRoute>}/>
       </Routes>
     </div>
   )
