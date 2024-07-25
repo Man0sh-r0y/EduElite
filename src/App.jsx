@@ -1,12 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home" // import thr Home page
+import Navbar from "./components/common/Navbar";
 import "./App.css";
 
 function App() {
 
   return (
     <div className="w-screen min-h-screen flex flex-col font-inter">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
       </Routes>
