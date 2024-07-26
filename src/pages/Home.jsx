@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Banner from "../assets/Images/banner.mp4"
 import HighlightText from '../components/core/HomePage/HighlightText'
 import CustomButton from '../components/core/HomePage/Button'
-import StudentImage from '../assets/homepage-img-showcase.jpg'
+import StudentImage from '../assets/Images/homepage-img-showcase.jpg'
 
 
 function Home() {

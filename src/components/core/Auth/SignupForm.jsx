@@ -63,18 +63,18 @@ function SignupForm() {
         <div>
             
             {/* Student and Instructor tab */}
-            <div className='flex bg-slate-800 p-1 gap-x-1 my-6 rounded-full max-w-max'>
-                <button className={`${accountType === ACCOUNT_TYPE.STUDENT ? "bg-yellow-25" : "bg-transparent "} py-2 px-5 rounded-full transition-all duration-200`}
+            <div className='flex bg-richblack-5 p-1 gap-x-1 my-6 rounded-full max-w-max'>
+                <button className={`${accountType === ACCOUNT_TYPE.STUDENT ? "bg-yellow-50" : "bg-transparent "} py-2 px-5 rounded-full transition-all duration-200`}
                     onClick={() => setAccountType(ACCOUNT_TYPE.STUDENT)}>
                     Student
                 </button>
-                <button className={`${accountType === ACCOUNT_TYPE.INSTRUCTOR ? "bg-yellow-25" : "bg-transparent"} py-2 px-5 rounded-full transition-all duration-200`}
+                <button className={`${accountType === ACCOUNT_TYPE.INSTRUCTOR ? "bg-yellow-50" : "bg-transparent"} py-2 px-5 rounded-full transition-all duration-200`}
                     onClick={() => setAccountType(ACCOUNT_TYPE.INSTRUCTOR)}>
                     Instructor
                 </button>
             </div>
 
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} >
                 {/* First Name and Last name */}
                 <div className='flex gap-x-4 mt-[20px]'>
                     <label className='w-full'>
@@ -90,7 +90,7 @@ function SignupForm() {
                             placeholder="Enter your first name"
                             onChange={changeHandler}
                             name="firstName"
-                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]' />
                     </label>
 
                     <label className='w-full'>
@@ -106,7 +106,7 @@ function SignupForm() {
                             placeholder="Enter your last name"
                             onChange={changeHandler}
                             name="lastName"
-                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]' />
                     </label>
                 </div>
 
@@ -125,7 +125,7 @@ function SignupForm() {
                             placeholder="Enter your email address"
                             onChange={changeHandler}
                             name="email"
-                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]' />
                     </label>
                 </div>
 
@@ -145,7 +145,7 @@ function SignupForm() {
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             onChange={changeHandler}
-                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]'
+                            className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]'
                         />
 
                         {/* Show Password icon */}
@@ -175,7 +175,7 @@ function SignupForm() {
                             placeholder="Confirm your password"
                             onChange={changeHandler}
                             name="confirmPassword"
-                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]' />
 
                         {/* Show Password icon */}
                         <span className='absolute right-3 top-[38px] cursor-pointer'

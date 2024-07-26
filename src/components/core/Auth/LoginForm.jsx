@@ -48,7 +48,7 @@ function LoginForm() {
                     placeholder="Enter your email address"
                     onChange={changeHandler}
                     name="email"
-                    className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]'
+                    className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]'
                 />
 
             </label>
@@ -67,7 +67,7 @@ function LoginForm() {
                     placeholder="Enter your password"
                     onChange={changeHandler}
                     name="password"
-                    className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]'
+                    className='bg-richblack-5 shadow-md rounded-[0.5rem] w-full p-[12px]'
                 />
                 {/* If showPassword is true, then input type would be text,
                  That's mean whatever we are typing in the input field that would be shown

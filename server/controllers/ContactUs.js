@@ -1,5 +1,4 @@
 const mailSender = require('../utils/mailSender');
-const contactUsEmail = require('../mail/templates/contactUsEmail');
 require('dotenv').config();
 
 exports.contactUs = async (req, res) => {
@@ -16,11 +15,13 @@ exports.contactUs = async (req, res) => {
             });
         }
 
-        // Get the contactUsEmail template for the mail
-        const templateEmail = contactUsEmail(email, firstName, lastName, message, contactNo, countryCode);
+        const mailBody = `
+            <h1> Contact Us Form filled by the Student ${firstName} ${lastName} </h1> <br/>
+            <p> Student filled the contact form. Email: ${email}, Phone: ${countryCode} ${contactNo} </p>
+            <p> Message: ${message} </p>`
 
         // Send mail to student who filled the form 
-        await mailSender(email, "Contact Form Confirmation", templateEmail); 
+        await mailSender(email, "Contact Form Confirmation", mailBody); 
 
         // Send mail to admin
         await mailSender(process.env.MAIL_USER, // send mail to admin

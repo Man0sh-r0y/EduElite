@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, matchPath, useLocation } from "react-router-dom"
 import { NavbarLinks } from "../../data/navbar-links"
-import logo from "../../assets/Logo/Logo-Full-Dark.png"
+import logo from "../../assets/Logo/EduHub_LOGO_1.png"
 import { useSelector } from "react-redux"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import ProfileDropDown from '../core/Auth/ProfileDropDown'

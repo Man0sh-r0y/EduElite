@@ -59,7 +59,7 @@ export const catalogData = {
 }
 // CONTACT-US API
 export const contactusEndpoint = {
-  CONTACT_US_API: BASE_URL + "/reach/contactUs"
+  CONTACT_US_API: BASE_URL + "/contactUs"
 }
 
 // SETTINGS PAGE API
