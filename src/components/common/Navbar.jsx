@@ -6,25 +6,10 @@ import { useSelector } from "react-redux"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import ProfileDropDown from '../core/Auth/ProfileDropDown'
 import { ACCOUNT_TYPE } from "../../utils/constants"
+import { apiConnector } from "../../services/apiConnector"
+import { categories } from "../../services/api"
+import { toast } from "react-hot-toast"
 
-const subLinks = [
-    {
-        title: "Python",
-        link: "/catalog/python"
-    },
-    {
-        title: "Java",
-        link: "/catalog/java"
-    },
-    {
-        title: "JavaScript",
-        link: "/catalog/javascript"
-    },
-    {
-        title: "C++",
-        link: "/catalog/c++"
-    }
-]
 
 function Navbar() {
     const { token } = useSelector(state => state.auth)
@@ -33,9 +18,26 @@ function Navbar() {
 
     const location = useLocation()
 
+    const [catagoryList, setCatagoryList] = useState([])
+
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname)
     }
+
+    const fetchCatagories = async() => {
+        try {
+            const response = await apiConnector("GET", categories.CATEGORIES_API)
+            setCatagoryList(response.data.data)
+        } 
+        catch (error) {
+            console.log("Couldn't fetch the Catagories Data from Server", error.message)
+            toast.error("Couldn't fetch the Catagories Data from Server")
+        }
+    }
+
+    useEffect(() => {
+        fetchCatagories()
+    },[])
 
 
     return (
@@ -64,10 +66,10 @@ function Navbar() {
                                                 <div className='invisible absolute left-[-70%] top-[180%] flex flex-col gap-4 rounded-md bg-richblack-5 p-4  opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 lg:w-[300px]'>
 
                                                     {
-                                                        subLinks.length > 0 ? (
-                                                            subLinks.map((subLink, index) => (
-                                                                <Link to={`${subLink.link}`} key={index}>
-                                                                    <span className="cursor-pointer hover:text-pink-300">{subLink.title}</span>
+                                                        catagoryList.length > 0 ? (
+                                                            catagoryList.map((catagory, index) => (
+                                                                <Link to={`${catagory.name}`} key={index}>
+                                                                    <span className="cursor-pointer hover:text-pink-300">{catagory.name}</span>
                                                                 </Link>
                                                             ))
                                                         ) : (<div> No Catagory Found !</div>)
