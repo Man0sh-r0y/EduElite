@@ -22,7 +22,7 @@ function SignupForm() {
 
     const [showPassword, setShowPassword] = useState(false); // initially showPassword is false
     const [showConfirmPassword, setShowConfirmPassword] = useState(false); // initially showConfirmPassword is false
-    const [accountType, setAccountType] = useState("student"); // initially accountType is student
+    const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT); // initially accountType is student
     // There are two types of accounts: student and instructor
 
 
@@ -64,12 +64,12 @@ function SignupForm() {
             
             {/* Student and Instructor tab */}
             <div className='flex bg-slate-800 p-1 gap-x-1 my-6 rounded-full max-w-max'>
-                <button className={`${accountType === "student" ? "bg-black text-white" : "bg-transparent text-white"} py-2 px-5 rounded-full transition-all duration-200`}
-                    onClick={() => setAccountType("student")}>
+                <button className={`${accountType === ACCOUNT_TYPE.STUDENT ? "bg-yellow-25" : "bg-transparent "} py-2 px-5 rounded-full transition-all duration-200`}
+                    onClick={() => setAccountType(ACCOUNT_TYPE.STUDENT)}>
                     Student
                 </button>
-                <button className={`${accountType === "instructor" ? "bg-black text-white" : "bg-transparent text-white"} py-2 px-5 rounded-full transition-all duration-200`}
-                    onClick={() => setAccountType("instructor")}>
+                <button className={`${accountType === ACCOUNT_TYPE.INSTRUCTOR ? "bg-yellow-25" : "bg-transparent"} py-2 px-5 rounded-full transition-all duration-200`}
+                    onClick={() => setAccountType(ACCOUNT_TYPE.INSTRUCTOR)}>
                     Instructor
                 </button>
             </div>
@@ -79,9 +79,9 @@ function SignupForm() {
                 <div className='flex gap-x-4 mt-[20px]'>
                     <label className='w-full'>
                         {/* First Name text */}
-                        <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                        <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                             First Name
-                            <sup className='text-rose-600'> * </sup>
+                            <sup className='text-pink-200'> * </sup>
                         </p>
                         {/* First Name input */}
                         <input
@@ -90,14 +90,14 @@ function SignupForm() {
                             placeholder="Enter your first name"
                             onChange={changeHandler}
                             name="firstName"
-                            className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
                     </label>
 
                     <label className='w-full'>
                         {/* Last Name text */}
-                        <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                        <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                             Last Name
-                            <sup className='text-rose-600'> * </sup>
+                            <sup className='text-pink-200'> * </sup>
                         </p>
                         {/* Last Name input */}
                         <input
@@ -106,7 +106,7 @@ function SignupForm() {
                             placeholder="Enter your last name"
                             onChange={changeHandler}
                             name="lastName"
-                            className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
                     </label>
                 </div>
 
@@ -114,9 +114,9 @@ function SignupForm() {
                 <div className='mt-[20px]'>
                     <label className='w-full mt-[20px]'>
                         {/* Email Address text */}
-                        <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                        <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                             Email Address
-                            <sup className='text-rose-600'> * </sup>
+                            <sup className='text-pink-200'> * </sup>
                         </p>
                         {/* Email Address input */}
                         <input
@@ -125,7 +125,7 @@ function SignupForm() {
                             placeholder="Enter your email address"
                             onChange={changeHandler}
                             name="email"
-                            className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
                     </label>
                 </div>
 
@@ -134,9 +134,9 @@ function SignupForm() {
                     {/* Create Password */}
                     <label className='w-full relative'>
                         {/* Create Password text */}
-                        <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                        <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                             Create Password
-                            <sup className='text-rose-600'> * </sup>
+                            <sup className='text-pink-200'> * </sup>
                         </p>
                         {/* Create Password input */}
                         <input
@@ -145,7 +145,7 @@ function SignupForm() {
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             onChange={changeHandler}
-                            className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]'
+                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]'
                         />
 
                         {/* Show Password icon */}
@@ -164,9 +164,9 @@ function SignupForm() {
                     {/* Confirm Password */}
                     <label className='w-full relative'>
                         {/* Confirm Password text */}
-                        <p className='text-[0.875rem] text-white mb-1 leading-[1.375rem]'>
+                        <p className='text-[0.875rem] mb-1 leading-[1.375rem]'>
                             Confirm Password
-                            <sup className='text-rose-600'> * </sup>
+                            <sup className='text-pink-200'> * </sup>
                         </p>
                         {/* Confirm Password input */}
                         <input
@@ -175,7 +175,7 @@ function SignupForm() {
                             placeholder="Confirm your password"
                             onChange={changeHandler}
                             name="confirmPassword"
-                            className='bg-slate-800 text-white rounded-[0.5rem] w-full p-[12px]' />
+                            className='bg-richblack-5 rounded-[0.5rem] w-full p-[12px]' />
 
                         {/* Show Password icon */}
                         <span className='absolute right-3 top-[38px] cursor-pointer'
@@ -193,7 +193,7 @@ function SignupForm() {
                 </div>
 
                 {/* Sign Up button */}
-                <button className=' w-full bg-amber-400 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-6'>
+                <button className='bg-yellow-50 w-full bg-amber-400 rounded-[8px] font-medium px-[12px] py-[8px] mt-6'>
                     Create Account
                 </button>
             </form>

@@ -1,9 +1,9 @@
 import loginImg from "../assets/Images/Login_img_3.jpg"
-import Template from "../components/core/Auth/Template"
+import FormTemplate from "../components/core/Auth/FormTemplate"
 
 function Login() {
   return (
-    <Template
+    <FormTemplate
       title="Welcome Back"
       description1="Build skills for today, tomorrow, and beyond."
       description2="Education to future-proof your career."
