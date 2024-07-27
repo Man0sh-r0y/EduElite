@@ -23,7 +23,7 @@ exports.sendOTP = async (req, res) => {
         const { email } = req.body;
 
         // check if user's email already exists in DataBase and send response
-        if(await User.findOne({ email })) {
+        if (await User.findOne({ email })) {
             return res.status(400).json({
                 success: false,
                 message: "User already exists"
@@ -31,7 +31,7 @@ exports.sendOTP = async (req, res) => {
         }
 
         // generate OTP (6 digit number otp)
-        var otp = otpGenerator.generate(6,{
+        var otp = otpGenerator.generate(6, {
             upperCase: false,
             specialChars: false,
             alphabets: false
@@ -76,7 +76,7 @@ exports.signUp = async (req, res) => {
         const { firstName, lastName, email, password, confirmPassword, accountType, otp } = req.body;
 
         // Validate the data (check if all fields are present or not)
-        if(!firstName || !lastName || !email || !password || !confirmPassword || !accountType) {
+        if (!firstName || !lastName || !email || !password || !confirmPassword || !accountType) {
             return res.status(403).json({
                 success: false,
                 message: "All fields are required"
@@ -84,7 +84,7 @@ exports.signUp = async (req, res) => {
         }
 
         // Check if password and confirm password doesn't match
-        if(password !== confirmPassword) {
+        if (password !== confirmPassword) {
             return res.status(403).json({
                 success: false,
                 message: "Password and Confirm Password doesn't match"
@@ -92,7 +92,7 @@ exports.signUp = async (req, res) => {
         }
 
         // Check if the user already exists in the DataBase
-        if(await User.findOne({ email })) {
+        if (await User.findOne({ email })) {
             return res.status(400).json({
                 success: false,
                 message: "User already exists"
@@ -105,7 +105,7 @@ exports.signUp = async (req, res) => {
         console.log(`OTP sent in request for the user ${email} is: ${otp} and recent otp in database is: ${recentOTP?.otp}`);
 
         // Check if the OTP is valid or not (incorrect otp or expired otp)
-        if(!recentOTP || recentOTP.otp !== otp) {
+        if (!recentOTP || recentOTP.otp !== otp) {
             return res.status(403).json({
                 success: false,
                 message: "Incorrect OTP"
@@ -165,7 +165,7 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
 
         // Validate the data (check if all fields are present or not)
-        if(!email || !password) {
+        if (!email || !password) {
             return res.status(403).json({
                 success: false,
                 message: "All fields are required"
@@ -174,7 +174,7 @@ exports.login = async (req, res) => {
 
         // Check if the user already exists in the DataBase
         const user = await User.findOne({ email });
-        if(!user) {
+        if (!user) {
             return res.status(401).json({
                 success: false,
                 message: "User isn't registered, please sign up"
@@ -182,11 +182,11 @@ exports.login = async (req, res) => {
         }
 
         // Generate JWT token after matching the password (if user provided correct password)
-        if(await bcrypt.compare(password, user.password)) {
+        if (await bcrypt.compare(password, user.password)) {
 
             // required options for JWT token
             const payload = {
-                id : user._id,
+                id: user._id,
                 email: user.email,
                 accountType: user.accountType,
             }
@@ -200,7 +200,7 @@ exports.login = async (req, res) => {
             user.password = undefined; // remove password from user object as we will return user object in response
 
             // create cookie and send response
-            res.cookie('token', token, {
+            return res.cookie('token', token, {
                 expires: new Date(Date.now() + 2 * 60 * 60 * 1000), // cookie will be removed after 2 hours
                 httpOnly: true
             }).status(200).json({
@@ -208,6 +208,12 @@ exports.login = async (req, res) => {
                 message: "User logged in successfully",
                 token: token,
                 user: user
+            });
+
+        } else {
+            return res.status(401).json({
+                success: false,
+                message: "Incorrect password"
             });
         }
     } catch (error) {
@@ -236,7 +242,7 @@ exports.changePassword = async (req, res) => {
         const { oldPassword, newPassword, confirmPassword } = req.body;
 
         // Validate Password (check if all fields are present or not)
-        if(!oldPassword || !newPassword || !confirmPassword) {
+        if (!oldPassword || !newPassword || !confirmPassword) {
             return res.status(403).json({
                 success: false,
                 message: "All fields are required"
@@ -244,7 +250,7 @@ exports.changePassword = async (req, res) => {
         }
 
         // Check if New Password and Confirm Password matches
-        if(newPassword !== confirmPassword) {
+        if (newPassword !== confirmPassword) {
             return res.status(403).json({
                 success: false,
                 message: "New Password and Confirm Password doesn't match"
@@ -266,7 +272,7 @@ exports.changePassword = async (req, res) => {
             success: true,
             message: "Password updated successfully"
         });
-        
+
     } catch (error) {
         return res.status(500).json({
             success: false,

@@ -1,11 +1,15 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
+import { login } from "../../../services/operations/AuthAPI";
+import { useDispatch } from "react-redux"
 import { useState } from 'react';
 import { toast } from "react-hot-toast"
 
 function LoginForm() {
 
     const navigate = useNavigate(); // useNavigate hook
+
+    const dispatch = useDispatch(); // useDispatch hook
 
     const [formData, setFormData] = useState({
         email: "", // initially email is empty
@@ -27,7 +31,7 @@ function LoginForm() {
 
     function submitHandler(event) {
         event.preventDefault()
-        dispatch(login(email, password, navigate))
+        dispatch(login(formData.email, formData.password, navigate))
     }
 
     return (
@@ -100,7 +104,7 @@ function LoginForm() {
             </label>
 
             {/* Login Button */}
-            <button className='bg-yellow-50 rounded-[8px] font-medium  px-[12px] py-[8px] mt-6'>
+            <button type="submit" className='bg-yellow-50 rounded-[8px] font-medium  px-[12px] py-[8px] mt-6'>
                 Sign in
             </button>
 

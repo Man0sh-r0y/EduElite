@@ -56,7 +56,7 @@ export function signUp( accountType, firstName, lastName, email, password, confi
         dispatch(setLoading(true))
 
         try {
-            const response = await apiConnector("POST", SIGNUP_API, {
+            const response = await apiConnector("POST", authEndpoints.SIGNUP_API, {
                 accountType,
                 firstName,
                 lastName,
@@ -96,12 +96,12 @@ export function login(email, password, navigate) {
         dispatch(setLoading(true))
 
         try {
-            const response = await apiConnector("POST", LOGIN_API, {
+            const response = await apiConnector("POST", authEndpoints.LOGIN_API, {
                 email,
                 password
             })
 
-            // console.log("LOGIN API RESPONSE............", response)
+            console.log("LOGIN API RESPONSE............", response)
 
             if (!response.data.success) {
                 throw new Error(response.data.message)
@@ -121,9 +121,9 @@ export function login(email, password, navigate) {
             navigate("/dashboard/my-profile")
 
         } catch (error) {
-            console.log("LOGIN API ERROR............", error)
-            toast.error("Login Failed")
+            toast.error(error.response.data.message)
         }
+        
         dispatch(setLoading(false))
         toast.dismiss(toastId)
     }

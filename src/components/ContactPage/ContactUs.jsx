@@ -26,6 +26,7 @@ const ContactUsForm = () => {
         }
         catch (error) {
             console.log("Error:", error.message);
+            toast.error("Failed To Send Message");
             setLoading(false);
         }
     }
