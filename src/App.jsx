@@ -5,6 +5,8 @@ import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import Contact from "./pages/Contact";
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
+import Error from "./pages/Error";
+import VerifyEmail from "./pages/VerifyEmail";
 import Home from "./pages/Home" // import thr Home page
 import "./App.css";
 
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/signup" element={<PrivateRoute> <Signup /> </PrivateRoute>}/>
         <Route path="/login" element={<PrivateRoute> <Login /></PrivateRoute>}/>
+        <Route path="/verify-email" element={<VerifyEmail />}/>
+        <Route path="*" element={<Error />}/> {/* for any unmatched routes */}
         <Route path="/contact" element={<Contact />}/>
       </Routes>
     </div>
