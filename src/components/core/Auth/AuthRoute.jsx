@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
 
-function PrivateRoute(props) {
+function AuthRoute(props) {
     const { token } = useSelector(state => state.auth)
     
 
-    if(token !== null)
+    if(token === null)
         return props.children
     else
-        return <Navigate to="/login" />
+        return <Navigate to="/dashboard/my-profile" />
 }
 
-export default PrivateRoute
+export default AuthRoute

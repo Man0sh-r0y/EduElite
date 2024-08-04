@@ -17,7 +17,7 @@ exports.updateProfile = async (req, res) => {
 
     try {
         //get data from request body
-        const { dateOfBirth = "", about = "", contactNumber, gender } = req.body;
+        const { firstName = "", lastName = "", dateOfBirth = "", about = "", contactNumber, gender } = req.body;
 
         // get userId from req.user as we have set the user id in req.user.id while authenticating the user in auth.js middleware
         const id = req.user.id;
@@ -44,10 +44,13 @@ exports.updateProfile = async (req, res) => {
         const profileDetails = await Profile.findById(profileId);
 
         //update profile
+        profileDetails.firstName = firstName;
+        profileDetails.lastName = lastName;
         profileDetails.dateOfBirth = dateOfBirth;
         profileDetails.about = about;
         profileDetails.gender = gender;
         profileDetails.contactNumber = contactNumber;
+
         await profileDetails.save();
 
         //return response
@@ -222,6 +225,8 @@ exports.updateDisplayPicture = async (req, res) => {
         const userId = req.user.id;
         const user = await User.findById(userId); // Find the user
 
+        console.log(displayPicture)
+
         // Validate the data
         if (!displayPicture) {
             return res.status(400).json({
@@ -246,9 +251,12 @@ exports.updateDisplayPicture = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: `Display Picture of ${user.firstName} ${user.lastName} Updated Successfully`
+            message: `Display Picture of ${user.firstName} ${user.lastName} Updated Successfully`,
+            imageURL: uploadedImage.secure_url
         });
+
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             success: false,
             message: "Display Picture of the user cannot be updated",
