@@ -17,7 +17,7 @@ exports.updateProfile = async (req, res) => {
 
     try {
         //get data from request body
-        const { firstName = "", lastName = "", dateOfBirth = "", about = "", contactNumber, gender } = req.body;
+        const { firstName, lastName, dateOfBirth = "", about = "", contactNumber, gender } = req.body;
 
         // get userId from req.user as we have set the user id in req.user.id while authenticating the user in auth.js middleware
         const id = req.user.id;
@@ -43,9 +43,13 @@ exports.updateProfile = async (req, res) => {
         const profileId = userDetails.additionalDetails; // additionalDetails is the id of profile of that user
         const profileDetails = await Profile.findById(profileId);
 
+        // update the firstName and lastName
+        if(firstName) userDetails.firstName = firstName;
+        if(lastName) userDetails.lastName = lastName;
+
+        await userDetails.save();
+
         //update profile
-        profileDetails.firstName = firstName;
-        profileDetails.lastName = lastName;
         profileDetails.dateOfBirth = dateOfBirth;
         profileDetails.about = about;
         profileDetails.gender = gender;
@@ -57,6 +61,7 @@ exports.updateProfile = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: `Profile of User ${userDetails.firstName} ${userDetails.lastName} has been Updated Successfully`,
+            userDetails: userDetails,
             profileDetails: profileDetails
         });
 

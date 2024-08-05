@@ -14,7 +14,7 @@ exports.auth = async (req, res, next) => {
     try {
         // Extract token from req 
         const token = req.cookies.token || req.body.token || req.header("Authorization").replace("Bearer ", "");
-
+        
         // check if token is present or not
         if(!token) {
             return res.status(401).json({
@@ -33,6 +33,7 @@ exports.auth = async (req, res, next) => {
             // this decodedPayload contains user's id, email and accountType
 
         } catch (error) {
+            console.log(error)
             return res.status(401).json({
                 success: false,
                 message: "Invalid token"

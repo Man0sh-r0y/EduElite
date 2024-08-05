@@ -13,7 +13,9 @@ import MyProfile from "./components/core/Dashboard/MyProfile"
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses"
 import Cart from "./components/core/Dashboard/Cart/Cart"
 import Settings from "./components/core/Dashboard/Settings/Settings"
+import ForgotPassword from "./pages/ForgotPassword"
 import Home from "./pages/Home"
+import About from "./pages/About"
 import { ACCOUNT_TYPE } from "./utils/constants"
 import { useSelector } from "react-redux"
 import "./App.css"
@@ -29,7 +31,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<AuthRoute> <Signup /> </AuthRoute>} />
         <Route path="/login" element={<AuthRoute> <Login /> </AuthRoute>} />
+        <Route path="/forgot-password" element={<AuthRoute> <ForgotPassword /> </AuthRoute>} />
         <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<Error />} /> 
 
         <Route path="/dashboard" element={<PrivateRoute> <Dashboard /> </PrivateRoute>}>
 
@@ -40,17 +46,13 @@ function App() {
             {
               user?.accountType === ACCOUNT_TYPE.STUDENT && (
                 <>
-                  <Route path="dashboard/cart" element={<PrivateRoute> <Cart /> </PrivateRoute>} />
-                  <Route path="dashboard/enrolled-courses" element={<PrivateRoute> <EnrolledCourses /> </PrivateRoute>} />
+                  <Route path="/dashboard/cart" element={<PrivateRoute> <Cart /> </PrivateRoute>} />
+                  <Route path="/dashboard/enrolled-courses" element={<PrivateRoute> <EnrolledCourses /> </PrivateRoute>} />
                 </>
               )
             }
           </Route>
         </Route>
-
-
-        <Route path="*" element={<Error />} /> {/* for any unmatched routes */}
-        <Route path="/contact" element={<Contact />} />
 
       </Routes>
     </div>

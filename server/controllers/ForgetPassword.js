@@ -40,10 +40,10 @@ exports.generateForgotPasswordToken = async (req, res) => {
         await User.findOneAndUpdate({ email }, { token: token, expires: Date.now() + 5 * 60 * 1000 }, { new: true }); // find user with email and add token to the user's document
 
         // create URL
-        const url = `http://localhost:3000/update-password/${token}`; // this URL will be sent to user's email
+        const url = `http://localhost:5173/update-password/${token}`; // this URL will be sent to user's email
 
         // send email to user
-        await mailSender.sendMail(email, "Reset Password", `Click on the link to reset password: ${url}`);
+        await mailSender(email, "Reset Password", `Click on the link to reset password: ${url}`);
 
         // send response
         res.status(200).json({

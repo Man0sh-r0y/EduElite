@@ -4,6 +4,7 @@ import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { authEndpoints } from "../api"
+import { useDispatch } from "react-redux"
 
 const { SENDOTP_API, SIGNUP_API, LOGIN_API, RESETPASSTOKEN_API, RESETPASSWORD_API } = authEndpoints
 
@@ -47,7 +48,7 @@ export function sendOtp(email, navigate) {
     }
 }
 
-export function signUp( accountType, firstName, lastName, email, password, confirmPassword, otp, navigate ) {
+export function signUp(accountType, firstName, lastName, email, password, confirmPassword, otp, navigate) {
 
     return async (dispatch) => {
 
@@ -114,7 +115,7 @@ export function login(email, password, navigate) {
                 ? response.data.user.image
                 : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
 
-            dispatch(setUser({ ...response.data.user, image: userImage }))
+            dispatch(setUser({ ...response.data.user, additionalDetails: response.data.additionalDetails, image: userImage }))
 
             localStorage.setItem("token", JSON.stringify(response.data.token))
             localStorage.setItem("user", JSON.stringify(response.data.user))
@@ -124,44 +125,41 @@ export function login(email, password, navigate) {
         } catch (error) {
             toast.error(error.response.data.message)
         }
-        
+
         dispatch(setLoading(false))
         toast.dismiss(toastId)
     }
 }
 
-export function getPasswordResetToken(email, setEmailSent) {
+export async function getPasswordResetToken(email, setEmailSent, dispatch) {
 
-    return async (dispatch) => {
-        
-        const toastId = toast.loading("Loading...")
+    const toastId = toast.loading("Loading...")
 
-        dispatch(setLoading(true))
+    dispatch(setLoading(true))
 
-        try {
-            const response = await apiConnector("POST", RESETPASSTOKEN_API, {
-                email,
-            })
+    try {
+        const response = await apiConnector("POST", RESETPASSTOKEN_API, {
+            email
+        })
 
-            // console.log("RESETPASSTOKEN RESPONSE............", response)
+        // console.log("RESETPASSTOKEN RESPONSE............", response)
 
-            if (!response.data.success) {
-                throw new Error(response.data.message)
-            }
-
-            toast.success("Reset Email Sent")
-
-            setEmailSent(true)
-
-        } catch (error) {
-            console.log("RESETPASSTOKEN ERROR............", error)
-            toast.error("Failed To Send Reset Email")
+        if (!response.data.success) {
+            throw new Error(response.data.message)
         }
 
-        toast.dismiss(toastId)
+        toast.success("Reset Email Sent")
 
-        dispatch(setLoading(false))
+        setEmailSent(true)
+
+    } catch (error) {
+        console.log("RESETPASSTOKEN ERROR............", error)
+        toast.error("Failed To Send Reset Email")
     }
+
+    toast.dismiss(toastId)
+
+    dispatch(setLoading(false))
 }
 
 export function resetPassword(password, confirmPassword, token, navigate) {
@@ -203,7 +201,7 @@ export function resetPassword(password, confirmPassword, token, navigate) {
 export function logout(navigate) {
 
     return (dispatch) => {
-        
+
         dispatch(setToken(null))
         dispatch(setUser(null))
         dispatch(resetCart())

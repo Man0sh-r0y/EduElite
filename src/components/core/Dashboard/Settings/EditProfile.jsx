@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-
+import { UNSAFE_ErrorResponseImpl, useNavigate } from "react-router-dom"
+import { setUser } from "../../../../slices/profileSlice"
 import { updateProfile } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
 
@@ -17,9 +17,15 @@ export default function EditProfile() {
 
   async function submitProfileForm (data) {
     try {
-      dispatch(updateProfile(token, data))
+      const responseData = await updateProfile(token, data)
+
+      if(responseData?.userDetails && responseData?.profileDetails) {
+        dispatch(setUser({...user, ...responseData.userDetails, additionalDetails: responseData.profileDetails}))
+        localStorage.setItem("user", JSON.stringify({...user, ...responseData.userDetails, additionalDetails: responseData.profileDetails}))
+      }
+
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
+      console.log("ERROR MESSAGE: ", error.message)
     }
   }
   

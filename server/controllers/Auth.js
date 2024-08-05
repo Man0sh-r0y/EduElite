@@ -181,6 +181,15 @@ exports.login = async (req, res) => {
             });
         }
 
+        const additionalDetails = await Profile.findOne({ _id: user.additionalDetails });
+
+        if (!additionalDetails) {
+            return res.status(401).json({
+                success: false,
+                message: "User's Additional Details Not Found!"
+            });
+        }
+
         // Generate JWT token after matching the password (if user provided correct password)
         if (await bcrypt.compare(password, user.password)) {
 
@@ -207,7 +216,8 @@ exports.login = async (req, res) => {
                 success: true,
                 message: "User logged in successfully",
                 token: token,
-                user: user
+                user: user,
+                additionalDetails: additionalDetails
             });
 
         } else {

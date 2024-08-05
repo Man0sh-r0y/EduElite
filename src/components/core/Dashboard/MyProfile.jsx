@@ -50,12 +50,7 @@ function MyProfile() {
             <RiEditBoxLine />
           </IconBtn>
         </div>
-        <p
-          className={`${user?.additionalDetails?.about
-              ? "text-richblack-5"
-              : "text-richblack-400"
-            } text-sm font-medium`}
-        >
+        <p className={`text-sm font-medium`}>
           {user?.additionalDetails?.about ?? "Write Something About Yourself"}
         </p>
       </div>

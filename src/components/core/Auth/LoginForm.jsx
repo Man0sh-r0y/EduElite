@@ -96,11 +96,11 @@ function LoginForm() {
                 </span>
 
                 {/* Forgot Password */}
-                <Link to="#"> {/* Currently user will not be redirected to any page that's why '#' */}
+                <div onClick={() => navigate("/forgot-password")} > {/* Currently user will not be redirected to any page that's why '#' */}
                     <p className='text-xs mt-1 text-black max-w-max ml-auto'>
                         Forgot Password?
                     </p>
-                </Link>
+                </div>
             </label>
 
             {/* Login Button */}

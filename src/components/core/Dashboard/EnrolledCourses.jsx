@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { getUserEnrolledCourses } from '../../../services/operations/profileAPI';
-import ProgressBar from '@ramonak/react-progress-bar';
+import { getUserEnrolledCourses } from '../../../services/operations/profileAPI'
+import ProgressBar from '@ramonak/react-progress-bar'
+import ScreenLoader from '../../common/ScreenLoader'
 
 const EnrolledCourses = () => {
 
-    const {token}  = useSelector((state) => state.auth);
+    const { token }  = useSelector((state) => state.auth)
 
-    const [enrolledCourses, setEnrolledCourses] = useState(null);
+    const [enrolledCourses, setEnrolledCourses] = useState(null)
 
 
-    const getEnrolledCourses = async() => {
+    async function getEnrolledCourses() {
         try{
-            const response = await getUserEnrolledCourses(token);
+            const response = await getUserEnrolledCourses(token)
             setEnrolledCourses(response);
         }
         catch(error) {
-            console.log("Unable to Fetch Enrolled Courses");
+            console.log("Unable to Fetch Enrolled Courses")
         }
     }
 
     useEffect(()=> {
-        getEnrolledCourses();
+        getEnrolledCourses()
     },[]);
 
 
   return (
-    <div className='text-white'>
+    <div>
 
         <div>Enrolled Courses</div>
         {
