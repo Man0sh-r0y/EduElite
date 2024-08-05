@@ -14,18 +14,15 @@ export default function UpdatePassword() {
   const [showOldPassword, setShowOldPassword] = useState(false)
   const [showNewPassword, setShowNewPassword] = useState(false)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const submitPasswordForm = async (data) => {
-    // console.log("password Data - ", data)
+  async function submitPasswordForm(data) {
+    
     try {
       await changePassword(token, data)
+
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
+      console.log("Error occured while changing password: ", error.message)
     }
   }
 
@@ -44,7 +41,7 @@ export default function UpdatePassword() {
                 name="oldPassword"
                 id="oldPassword"
                 placeholder="Enter Current Password"
-                className="form-style"
+                className="form-style bg-richblack-5 px-4 py-2"
                 {...register("oldPassword", { required: true })}
               />
               <span
@@ -72,7 +69,7 @@ export default function UpdatePassword() {
                 name="newPassword"
                 id="newPassword"
                 placeholder="Enter New Password"
-                className="form-style"
+                className="form-style bg-richblack-5 px-4 py-2"
                 {...register("newPassword", { required: true })}
               />
               <span
@@ -88,6 +85,35 @@ export default function UpdatePassword() {
               {errors.newPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
                   Please enter your New Password.
+                </span>
+              )}
+            </div>
+
+            <div className="relative flex flex-col gap-2 lg:w-[48%]">
+              <label htmlFor="newPassword" className="lable-style">
+                Confirm Password
+              </label>
+              <input
+                type={showNewPassword ? "text" : "password"}
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Enter Confirm Password"
+                className="form-style bg-richblack-5 px-4 py-2"
+                {...register("confirmPassword", { required: true })}
+              />
+              <span
+                onClick={() => setShowNewPassword((prev) => !prev)}
+                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+              >
+                {showNewPassword ? (
+                  <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                ) : (
+                  <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                )}
+              </span>
+              {errors.confirmPassword && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                  Please enter your Confirm Password.
                 </span>
               )}
             </div>

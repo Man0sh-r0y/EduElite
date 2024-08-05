@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const ForgotPasswordToken = require('../models/ForgotPasswordToken');
 const mailSender = require('../utils/mailSender');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
@@ -21,8 +22,10 @@ exports.generateForgotPasswordToken = async (req, res) => {
         // Fetch email from req body
         const { email } = req.body;
 
+        const user = await User.findOne({ email });
+
         // check if user exists in DataBase
-        if(!await User.findOne({ email })) {
+        if(!user) {
             return res.status(401).json({
                 success: false,
                 message: "User does not exists"
@@ -37,7 +40,20 @@ exports.generateForgotPasswordToken = async (req, res) => {
         // so This token will help to fetch the user from the database in the Backend
         // so the token need to be stored in the DataBase in the user's document
 
-        await User.findOneAndUpdate({ email }, { token: token, expires: Date.now() + 5 * 60 * 1000 }, { new: true }); // find user with email and add token to the user's document
+        const forgotPasswordToken = await ForgotPasswordToken.findOne({user: user._id});
+        console.log(forgotPasswordToken);
+
+        if(!forgotPasswordToken) {
+            await ForgotPasswordToken.create({ // create the forgotpassword token
+                token, 
+                expires: Date.now() + 5 * 60 * 1000, 
+                user: user._id 
+            });
+        } else {
+            forgotPasswordToken.token = token;
+            forgotPasswordToken.expires = Date.now() + 5 * 60 * 1000;
+            await forgotPasswordToken.save(); // save the updated forgotpassword token
+        }
 
         // create URL
         const url = `http://localhost:5173/update-password/${token}`; // this URL will be sent to user's email
@@ -82,8 +98,10 @@ exports.resetForgotPassword = async (req, res) => {
             });
         }
 
+        const forgotPasswordToken = await ForgotPasswordToken.findOne({token});
+
         // fetch user from DataBase using token
-        const user = await User.findOne({ token: token });
+        const user = await User.findById(forgotPasswordToken.user);
 
         // if user not found
         if(!user) {
@@ -94,7 +112,7 @@ exports.resetForgotPassword = async (req, res) => {
         }
 
         // check if token is expired or not
-        if(user.expires < Date.now()) {
+        if(forgotPasswordToken.expires < Date.now()) {
             return res.status(401).json({
                 success: false,
                 message: "Token is expired, Please regenerate your token"
@@ -105,7 +123,7 @@ exports.resetForgotPassword = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // update password in DataBase
-        await User.findOneAndUpdate({token: token}, {password: hashedPassword}, {new: true});
+        await User.findOneAndUpdate({_id: forgotPasswordToken.user}, {password: hashedPassword}, {new: true});
 
         // send response
         res.status(200).json({

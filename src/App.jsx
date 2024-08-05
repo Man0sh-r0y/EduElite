@@ -14,6 +14,7 @@ import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses"
 import Cart from "./components/core/Dashboard/Cart/Cart"
 import Settings from "./components/core/Dashboard/Settings/Settings"
 import ForgotPassword from "./pages/ForgotPassword"
+import UpdatePassword from "./pages/Updatepassword"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import { ACCOUNT_TYPE } from "./utils/constants"
@@ -32,6 +33,7 @@ function App() {
         <Route path="/signup" element={<AuthRoute> <Signup /> </AuthRoute>} />
         <Route path="/login" element={<AuthRoute> <Login /> </AuthRoute>} />
         <Route path="/forgot-password" element={<AuthRoute> <ForgotPassword /> </AuthRoute>} />
+        <Route path="/update-password/:id" element={<AuthRoute> <UpdatePassword /> </AuthRoute>} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />

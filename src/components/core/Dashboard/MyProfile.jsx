@@ -72,42 +72,42 @@ function MyProfile() {
         </div>
 
         <div className="flex max-w-[500px] justify-between">
-          <div className="flex flex-col gap-y-5">
+          <div className="flex flex-col gap-y-5 w-[40%]">
             <div>
-              <p className="mb-2 text-sm ">First Name</p>
-              <p className="text-sm font-medium ">
+              <p className="mb-2 text-sm font-bold">First Name</p>
+              <p className="text-sm font-medium bg-richblack-5 px-4 py-2 ">
                 {user?.firstName}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm ">Email</p>
-              <p className="text-sm font-medium ">
+              <p className="mb-2 text-sm font-bold">Email</p>
+              <p className="text-sm font-medium bg-richblack-5 px-4 py-2 ">
                 {user?.email}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm ">Gender</p>
-              <p className="text-sm font-mediu">
+              <p className="mb-2 text-sm font-bold ">Gender</p>
+              <p className="text-sm font-medium bg-richblack-5 px-4 py-2">
                 {user?.additionalDetails?.gender ?? "Add Gender"}
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-y-5">
+          <div className="flex flex-col gap-y-5 w-[40%]">
             <div>
-              <p className="mb-2 text-sm ">Last Name</p>
-              <p className="text-sm font-medium ">
+              <p className="mb-2 text-sm font-bold ">Last Name</p>
+              <p className="text-sm font-medium bg-richblack-5 px-4 py-2 ">
                 {user?.lastName}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
-              <p className="text-sm font-medium ">
+              <p className="mb-2 text-sm font-bold">Phone Number</p>
+              <p className="text-sm font-medium bg-richblack-5 px-4 py-2 ">
                 {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm">Date Of Birth</p>
-              <p className="text-sm font-medium">
+              <p className="mb-2 text-sm font-bold">Date Of Birth</p>
+              <p className="text-sm font-medium bg-richblack-5 px-4 py-2">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ??
                   "Add Date Of Birth"}
               </p>

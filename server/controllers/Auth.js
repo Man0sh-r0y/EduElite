@@ -5,6 +5,7 @@ const mailSender = require('../utils/mailSender');
 const otpGenerator = require('otp-generator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { default: mongoose } = require('mongoose');
 require('dotenv').config();
 
 // send OTP Logic:
@@ -267,11 +268,20 @@ exports.changePassword = async (req, res) => {
             });
         }
 
+        const userID = req.user.id;
+
+        if(!userID) {
+            return res.status(401).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
         // Hash the new password
         const hashedPassword = await bcrypt.hash(newPassword, 10);
 
         // Update password in DataBase
-        const user = await User.findOneAndUpdate({ oldPassword }, { password: hashedPassword }, { new: true }); // find user by old password and update password with new password
+        const user = await User.findByIdAndUpdate({ _id: userID }, { password: hashedPassword }, { new: true }); // find user by old password and update password with new password
         // if I would haven't used { new: true } then it would have returned the old document
 
         // Send Mail of password updation

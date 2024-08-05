@@ -4,7 +4,6 @@ import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { authEndpoints } from "../api"
-import { useDispatch } from "react-redux"
 
 const { SENDOTP_API, SIGNUP_API, LOGIN_API, RESETPASSTOKEN_API, RESETPASSWORD_API } = authEndpoints
 
@@ -162,40 +161,37 @@ export async function getPasswordResetToken(email, setEmailSent, dispatch) {
     dispatch(setLoading(false))
 }
 
-export function resetPassword(password, confirmPassword, token, navigate) {
+export async function resetPassword(password, confirmPassword, token, navigate, dispatch) {
 
-    return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
 
-        const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
 
-        dispatch(setLoading(true))
+    try {
+        const response = await apiConnector("POST", RESETPASSWORD_API, {
+            password,
+            confirmPassword,
+            token
+        })
 
-        try {
-            const response = await apiConnector("POST", RESETPASSWORD_API, {
-                password,
-                confirmPassword,
-                token,
-            })
+        console.log("RESETPASSWORD RESPONSE............", response)
 
-            console.log("RESETPASSWORD RESPONSE............", response)
-
-            if (!response.data.success) {
-                throw new Error(response.data.message)
-            }
-
-            toast.success("Password Reset Successfully")
-
-            navigate("/login")
-
-        } catch (error) {
-            console.log("RESETPASSWORD ERROR............", error)
-            toast.error("Failed To Reset Password")
+        if (!response.data.success) {
+            throw new Error(response.data.message)
         }
 
-        toast.dismiss(toastId)
+        toast.success("Password Reset Successfully")
 
-        dispatch(setLoading(false))
+        navigate("/login")
+
+    } catch (error) {
+        console.log("RESETPASSWORD ERROR: ", error.message)
+        toast.error("Failed To Reset Password")
     }
+
+    toast.dismiss(toastId)
+
+    dispatch(setLoading(false))
 }
 
 export function logout(navigate) {
